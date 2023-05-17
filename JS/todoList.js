@@ -21,7 +21,7 @@ const todoContent = document.querySelector('#todoContent input');
 const deleteTodoBtn = document.querySelector('#deleteTodoBtn');
 
 let todos = [];
-// 제목과 내용
+// 제목과 내용, 체크여부
 const TODOS = 'todos';
 
 todoFullDate.innerText = `${todoMonth}월 ${todoDate}일 ${todoDay}`;
@@ -32,11 +32,13 @@ function setVisible() {
     addTodoBtn.classList.remove('addTodoList');
     addTodoBtn.classList.add('closeTextArea');
     addTodoBtn.innerText = 'X';
+    todoList.id = 'changedUL';
   } else if (addTodoBtn.classList.contains('closeTextArea')) {
     textArea.classList.add('hidden');
     addTodoBtn.classList.remove('closeTextArea');
     addTodoBtn.classList.add('addTodoList');
     addTodoBtn.innerText = '+';
+    todoList.id = '';
   }
 }
 
@@ -46,12 +48,17 @@ function addTodo(event) {
   const content_ = todoContent.value;
   todoTitle.value = '';
   todoContent.value = '';
-  const input = { title: title_, content: content_ };
+  const input = { title: title_, content: content_, check: false };
   console.log(title_);
   console.log(content_);
-  todos.push({ title: title_, content: content_ });
-  localStorage.setItem(TODOS, JSON.stringify(todos));
-  paint(input);
+  if (title_ != '' && content_ != '') {
+    todos.push(input);
+    localStorage.setItem(TODOS, JSON.stringify(todos));
+    paint(input);
+  } else {
+    alert('제목과 내용을 써주세요.');
+  }
+  setVisible();
 }
 
 function paint(input) {
@@ -60,13 +67,20 @@ function paint(input) {
   const text = document.createElement('input');
   text.value = input.title;
   text.type = 'radio';
+  text.checked = input.check;
+  li.addEventListener('click', viewTodo);
   const label = document.createElement('label');
   label.innerText = input.title;
   label.for = input.title;
   li.appendChild(text);
   li.appendChild(label);
   todoList.appendChild(li);
-  console.log('no');
+}
+
+function viewTodo(text) {
+  setVisible();
+  todoTitle.value = text.title;
+  todoContent.value = text.content;
 }
 
 addTodoBtn.addEventListener('click', setVisible);
@@ -76,7 +90,6 @@ const savedTodos = localStorage.getItem(TODOS);
 
 if (savedTodos != null) {
   const parsedToDos = JSON.parse(savedTodos);
-  console.log(parsedToDos);
   todos = parsedToDos;
   parsedToDos.forEach(paint);
 }
