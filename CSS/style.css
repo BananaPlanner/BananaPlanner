@@ -25,7 +25,7 @@
     color: #422E17;
 }
 
-.addTodoList{
+.addTodoListBtn{
     width: 394px;
     height: 54px;
 
@@ -132,4 +132,10 @@ ul{
 
 #changedUL{
     height: 240px;
+}
+
+form input{
+    font-family: 'Inter';
+
+    color: white;
 }

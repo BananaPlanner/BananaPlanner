@@ -13,7 +13,7 @@ const WEEK = [
 ];
 const todoDay = WEEK[today.getDay()];
 const todoList = document.querySelector('#todoList');
-const addTodoBtn = document.querySelector('.addTodoList');
+const addTodoBtn = document.querySelector('.addTodoListBtn');
 const textArea = document.querySelector('#textArea');
 const todoTitle = document.querySelector('#todoTitle input');
 const saveTodoBtn = document.querySelector('#saveTodoBtn');
@@ -27,16 +27,18 @@ const TODOS = 'todos';
 todoFullDate.innerText = `${todoMonth}월 ${todoDate}일 ${todoDay}`;
 
 function setVisible() {
-  if (addTodoBtn.classList.contains('addTodoList')) {
+  if (addTodoBtn.classList.contains('addTodoListBtn')) {
     textArea.classList.remove('hidden');
-    addTodoBtn.classList.remove('addTodoList');
+    addTodoBtn.classList.remove('addTodoListBtn');
     addTodoBtn.classList.add('closeTextArea');
     addTodoBtn.innerText = 'X';
+    todoTitle.innerText = '';
+    todoContent.innerText = '';
     todoList.id = 'changedUL';
   } else if (addTodoBtn.classList.contains('closeTextArea')) {
     textArea.classList.add('hidden');
     addTodoBtn.classList.remove('closeTextArea');
-    addTodoBtn.classList.add('addTodoList');
+    addTodoBtn.classList.add('addTodoListBtn');
     addTodoBtn.innerText = '+';
     todoList.id = '';
   }
