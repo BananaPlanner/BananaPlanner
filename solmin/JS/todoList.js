@@ -15,9 +15,9 @@ const todoDay = WEEK[today.getDay()];
 const todoList = document.querySelector('#todoList');
 const addTodoBtn = document.querySelector('.addTodoListBtn');
 const textArea = document.querySelector('#textArea');
-const todoTitle = document.querySelector('#todoTitle input');
+const todoTitle = document.querySelector('#todoTitle_input');
 const saveTodoBtn = document.querySelector('#saveTodoBtn');
-const todoContent = document.querySelector('#todoContent input');
+const todoContent = document.querySelector('#todoContent_input');
 const deleteTodoBtn = document.querySelector('#deleteTodoBtn');
 
 let todos = [];
@@ -32,15 +32,17 @@ function setVisible() {
     addTodoBtn.classList.remove('addTodoListBtn');
     addTodoBtn.classList.add('closeTextArea');
     addTodoBtn.innerText = 'X';
-    todoTitle.innerText = '';
-    todoContent.innerText = '';
     todoList.id = 'changedUL';
+    todoTitle.value = '';
+    todoContent.value = '';
   } else if (addTodoBtn.classList.contains('closeTextArea')) {
     textArea.classList.add('hidden');
     addTodoBtn.classList.remove('closeTextArea');
     addTodoBtn.classList.add('addTodoListBtn');
     addTodoBtn.innerText = '+';
-    todoList.id = '';
+    todoList.id = 'todoList';
+    todoTitle.value = '';
+    todoContent.value = '';
   }
 }
 
@@ -50,9 +52,12 @@ function addTodo(event) {
   const content_ = todoContent.value;
   todoTitle.value = '';
   todoContent.value = '';
-  const input = { title: title_, content: content_, check: false };
-  console.log(title_);
-  console.log(content_);
+  const input = {
+    title: title_,
+    content: content_,
+    check: false,
+    selected: false,
+  };
   if (title_ != '' && content_ != '') {
     todos.push(input);
     localStorage.setItem(TODOS, JSON.stringify(todos));
@@ -64,27 +69,75 @@ function addTodo(event) {
 }
 
 function paint(input) {
-  const todo = input;
   const li = document.createElement('li');
   const text = document.createElement('input');
   text.value = input.title;
   text.type = 'radio';
   text.checked = input.check;
-  li.addEventListener('click', viewTodo);
+  text.selected = input.selected;
   const label = document.createElement('label');
   label.innerText = input.title;
   label.for = input.title;
   li.appendChild(text);
   li.appendChild(label);
   todoList.appendChild(li);
+  label.addEventListener('click', setViewTodo);
 }
 
-function viewTodo(text) {
+function setViewTodo(event) {
   setVisible();
-  todoTitle.value = text.title;
-  todoContent.value = text.content;
+  const label = event.target;
+  const todo = searchTodo(label);
+  todo.selected = !todo.selected;
+  if (todo.selected) {
+    todoTitle.value = todo.title;
+    todoContent.value = todo.content;
+    label.id = 'selectedLabel';
+  } else {
+    todoTitle.value = '';
+    todoContent.value = '';
+    label.id = '';
+  }
 }
 
+function searchTodo(label) {
+  console.log(label.innerText);
+  let found = {};
+  for (let todo of todos) {
+    if (todo.title === label.innerText) {
+      found = todo;
+      console.log(found);
+    }
+  }
+  return found;
+}
+
+function searchTodoIndex(label) {
+  console.log(label.innerText);
+  let found = {};
+  let index = -1;
+  let check = false;
+  for (let todo of todos) {
+    if (!check) index++;
+    if (todo.title === label.innerText) {
+      found = todo;
+      check = !check;
+    }
+  }
+  return index;
+}
+
+function deleteTodo() {
+  const deleteTodoTitle = todoTitle.value;
+  console.log(deleteTodoTitle);
+  const deleteTodoIndex = searchTodoIndex(deleteTodoTitle);
+  console.log(deleteTodoIndex);
+  todos.splice(deleteTodoIndex, 1);
+  localStorage.setItem(TODOS, JSON.stringify(todos));
+  setVisible();
+}
+
+deleteTodoBtn.addEventListener('click', deleteTodo);
 addTodoBtn.addEventListener('click', setVisible);
 saveTodoBtn.addEventListener('click', addTodo);
 

@@ -14,6 +14,8 @@
     width: 225px;
     height: 36px;
     margin: 0 auto;
+    padding-top: 32px;
+    padding-bottom: 26px;
 
     font-family: 'Inter';
     font-style: normal;
@@ -25,12 +27,19 @@
     color: #422E17;
 }
 
+#todoList{
+    height: 580px;
+}
+
 .addTodoListBtn{
     width: 394px;
     height: 54px;
 
+    font-size: 40px;
+
     background: #B0995D;
     border-radius: 5px 5px 20px 20px;
+    color: white;
 }
 
 .closeTextArea{
@@ -39,6 +48,7 @@
     margin: 0 auto;
     
     background: #B0995D;
+    color: white;
     border-radius: 5px 5px 20px 20px;
     transform: rotate(180deg);
 }
@@ -124,6 +134,13 @@
 li{
     list-style: none;
     text-align: left;
+    padding-bottom: 15px;
+}
+
+li :first-child{
+    font-family: 'SUIT';
+    font-style: normal;
+    padding-top: 24px;
 }
 
 ul{
@@ -131,11 +148,15 @@ ul{
 }
 
 #changedUL{
-    height: 240px;
+    height: 200px;
 }
 
 form input{
     font-family: 'Inter';
 
     color: white;
+}
+
+#selectedLabel{
+    background-color: #422E17;
 }
