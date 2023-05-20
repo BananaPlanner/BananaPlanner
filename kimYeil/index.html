@@ -4,9 +4,9 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, width=device-width" />
   <title>BananaPlanner</title>
   <link rel="stylesheet" href="index.css">
+  <script src="./index.js"></script>
 </head>
 <body>
   <header>
@@ -34,9 +34,11 @@
     </div>
     <div class="diary">
       <div class="date">5월 4일 목요일</div>
-      <div class="content">오늘도 내일도 어제도 그제도 모레도 내년도 힘든 하루였다</div>
+      <div class="content">
+        <p><textarea id="textForm" rows="13" oninput="checkLength()" maxlength="200"></textarea></p>
+        <span><img class="editImg" onclick = "saveDiary()" src="./image/edit.png"></span>
+      </div>
     </div>
   </section>
-      
 </body>
 </html>

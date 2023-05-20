@@ -88,7 +88,6 @@ section {
 }
 .date{
   padding-top: 20px;
-  margin-bottom: 20px;
   font-family: 'Nanum Pen Script';
   text-align: center;
   font-weight: 700;
@@ -96,12 +95,20 @@ section {
   color: #422E17;
 }
 .content{
-  font-family: 'SUIT-Regular';
-  color: #422E17;
-  font-weight: 500;
-  font-size: 18px;
-  line-height: 29px;
+  position: relative;
   padding: 0 10px 0 15px;
+  border: 3px solid #422E17;
+  border-radius: 20px;
+  margin: 15px;
+  height: 83%;
+}
+
+.editImg {
+  width: 8%;
+  position: absolute;
+  top: 92%;
+  left: 85%;
+  cursor: pointer;
 }
 
 .calendar {
@@ -116,4 +123,22 @@ section {
 .tail {
   margin-left: 300px;
   margin-right: 50px;
+}
+
+#textForm{
+  width: 95%;
+  background-color: #FEF38D;
+  border: none;
+  outline: none;
+  resize: none;
+  font-family: 'SUIT-Regular';
+  color: #422E17;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 29px;
+  box-sizing: border-box;
+}
+
+.content > p {
+  margin-top: 5px;
 }
