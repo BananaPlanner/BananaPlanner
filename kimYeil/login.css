@@ -1,0 +1,88 @@
+@font-face {
+  font-family: 'CookieRun-Regular';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/CookieRun-Regular.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'SUIT-Regular';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_suit@1.0/SUIT-Regular.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+
+body {
+  background-color: #FFFBB2; 
+}
+
+.container {
+  margin: auto;
+  width: 50%;
+  margin-top: 7%; 
+}
+
+.logo {
+  color: #422E17;
+  font-family: 'CookieRun-Regular';
+  font-weight: 900;
+  font-size: 65px;
+  line-height: 90%;
+  text-align: center;
+  letter-spacing: 0.1em;
+}
+
+.banana{
+  position: relative;
+  margin: auto;
+  width: 760px;
+  height: 340px;
+  background: url('./image/Group\ 12.png');
+  background-size: cover;
+}
+
+.loginForm {
+  position: absolute;
+  display: flex;
+  top: 40%;
+  left: 30%;
+  width: 40%;
+  height: 30%;
+  margin: auto;
+  text-align: center;
+  background: #FFFBB2;
+  border-radius: 35px;
+}
+
+.form{
+  margin: auto;
+  line-height: 200%;
+  display: flex;
+}
+
+.labelId, .labelPw {
+  font-family: 'CookieRun-Regular';
+  color: #422E17;
+  letter-spacing: 0.04em;
+}
+
+.loginBtn {
+  margin: auto 0px auto 10px;
+  font-family: 'CookieRun-Regular';
+  background-color: #FFF278;
+  color:#422E17;
+  border-radius: 20px;
+  cursor: pointer;
+}
+
+#id, #pw {
+  font-family: 'SUIT-Regular';
+  background: transparent;
+  border: none;
+  outline: none;
+  width: 130px;
+  padding-left: 10px;
+}
+
+.idForm, .pwForm {
+  text-align: right;
+}
