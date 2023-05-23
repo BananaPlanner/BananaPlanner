@@ -11,10 +11,10 @@ function changeCalendarView() {
     const calendarBtn = document.getElementById("calendarBtn");
 
     if(monthlyMode){
-        calendarBtn.value = "WEEKLY";
+        calendarBtn.value = "MONTHLY";
         monthlyMode = false;
     } else {
-        calendarBtn.value = "MONTHLY"
+        calendarBtn.value = "WEEKLY"
         monthlyMode = true;
     }
 }
