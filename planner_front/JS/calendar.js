@@ -55,13 +55,16 @@ function loadCalendar(date) {
       document.querySelector('#todoList-date').innerText = `${year}년 ${
         month + 1
       }월 ${e.target.innerText}일 ${day}`;
+      document.querySelector('#diary-date').innerText = `${year}년 ${
+        month + 1
+      }월 ${e.target.innerText}일 ${day}`;
       /*       displayBox.innerText = `${year}-${month + 1}-${e.target.innerText}`; */
     });
   }
 
-  document.getElementById('monthYearDisplay').innerText = `${year} - ${
+  document.getElementById('monthYearDisplay').innerText = `${year}년 ${
     month + 1
-  }`;
+  }월`;
 }
 
 window.onload = function () {

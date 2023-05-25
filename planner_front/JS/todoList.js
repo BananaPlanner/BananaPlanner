@@ -1,4 +1,5 @@
 const todoFullDate = document.querySelector('#todoList-date');
+const diaryDate = document.querySelector('#diary-date');
 const today = new Date();
 const todoYear = today.getFullYear();
 const todoMonth = today.getMonth() + 1;
@@ -26,6 +27,7 @@ let todos = [];
 const TODOS = 'todos';
 
 todoFullDate.innerText = `${todoYear}년 ${todoMonth}월 ${todoDate}일 ${todoDay}`;
+diaryDate.innerText = `${todoYear}년 ${todoMonth}월 ${todoDate}일 ${todoDay}`;
 
 function setVisible() {
   if (addTodoBtn.classList.contains('addTodoListBtn')) {
@@ -148,7 +150,7 @@ function deleteTodo(event) {
   setVisible();
 }
 
-const observer = new MutationObserver(function () {
+const observerTodo = new MutationObserver(function () {
   const items = todoList.getElementsByTagName('li');
   for (let i = 0; i < items.length; i++) items[i].remove();
   if (savedTodos != null) {
@@ -164,7 +166,7 @@ const observer = new MutationObserver(function () {
   console.log(todos);
 });
 
-observer.observe(todoFullDate, {
+observerTodo.observe(todoFullDate, {
   subtree: true,
   characterData: true,
   childList: true,

@@ -56,7 +56,7 @@ header{
 
 main{
     position: relative;
-    top: 0px;
+    top: -70px;
     left: 50px;
     display: flex;
     min-width: 1972px;
@@ -214,9 +214,9 @@ main{
     border-radius: 45px;
 }
 
-#todoList-date{
+#todoList-date, #diary-date{
     position: relative;
-    width: 225px;
+    width: 300px;
     height: 36px;
     margin: 0 auto;
     padding-top: 32px;
@@ -296,7 +296,7 @@ main{
     width: 290px;
     height: 30px;
     border: none;
-    background: #B0995D;
+    background: transparent;
 }
 
 #todoContent{
@@ -315,11 +315,13 @@ main{
     width: 320px;
     height: 250px;
 
-    background: #B0995D;
+    background: transparent;
     border: none;
 }
 
 #saveTodoBtn{
+    background-color: transparent;
+    border: none;
     position: relative;
     width: 26px;
     height: 25px;
@@ -327,11 +329,12 @@ main{
 }
 
 #deleteTodoBtn{
+    background-color: transparent;
     position: relative;
     width: 14px;
     height: 0px;
-    top: 10px;
-    left: 200px;
+    top: -7px;
+    left: 330px;
 
     border: 1px solid #B0995D;
     transform: rotate(90deg);
@@ -388,4 +391,32 @@ form input{
     border-radius: 10px 10px 0px 0px;
     border: none;
     cursor: pointer;
+}
+
+.editImg{
+    width: 30px;
+}
+
+#diaryText{
+    margin: 0 auto;
+}
+
+#diaryTextForm{
+    position: relative;
+    height: 600px;
+    width: 400px;
+    left: 23px;
+    border: 1px solid #422E17;
+    border-radius: 10px 10px 10px 10px;
+    background: transparent;
+    font-size: 23px;
+    font-family: SUIT-Regular;
+}
+
+#saveDiaryBtn{
+    background-color: transparent;
+    border: none;
+    position: relative;
+    left: 400px;
+    bottom: 20px;
 }

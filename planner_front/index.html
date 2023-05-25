@@ -35,7 +35,9 @@
                 <div id="calendar" class="calendar"></div>
             </div>
         </div>
-        <div class="rightBox">
+
+        <div class="rightBox" id="todoListDiv">
+
             <input type="button" value="TODOLIST" id="changeBtn" onclick="changeView()"></input>
             <div id="displayBox" class="display-box">
                 <h1 id="todoList-date"></h1>
@@ -45,7 +47,7 @@
                     <div id="todoTitle">
                         <form>
                             <input id="todoTitle_input" type="text">
-                            <button id="saveTodoBtn"><img src="img/edit.png" alt=""></button>
+                            <button id="saveTodoBtn"><img src="img/edit.png" alt="edit" class="editImg"></button>
                         </form>
                     </div>
                     <div id="todoContent">
@@ -57,8 +59,20 @@
                 </div>
             </div>
         </div>
+        <div class="rightBox hidden" id="diaryDiv">
+            <input type="button" value="DIARY" id="changeBtn" onclick="changeView()"></input>
+            <div class="display-box">
+                <h1 id="diary-date"></h1>
+                <div id="diaryText">
+                    <textarea id="diaryTextForm" rows="13" maxlength="200"></textarea>
+                    <p></p>
+                    <button id="saveDiaryBtn"><img class="editImg" src="./img/edit.png"></button>
+                </div>
+            </div>
+        </div>
     </main>
     <script src="JS/todoList.js"></script>
+    <script src="JS/diary.js"></script>
     <script src="JS/calendar.js"></script>
     <script src="JS/index.js"></script>
     <script src="JS/login.js"></script>
