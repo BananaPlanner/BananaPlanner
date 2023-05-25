@@ -82,11 +82,10 @@ main{
 }
 
 .display-box {
-    position: relative;
-    left: 50px;
+    /* position: relative; */
+    /* left: 50px; */
+  
     font-size: 2em;
-
-
     width: 450px;
     height: 775px;
 
@@ -370,4 +369,23 @@ form input{
 
 #selectedLabel{
     background-color: #422E17;
+}
+
+.rightBox {
+    margin-left: 50px;
+}
+
+#calendarBtn, #changeBtn {
+    width: 120px;
+    height: 25px;
+    font-family: 'CookieRun';
+    margin-left: 30px;
+    
+    background: #ACE292;
+    color: #3E6B28;
+    font-weight: 600;
+    font-size: 13px;
+    border-radius: 10px 10px 0px 0px;
+    border: none;
+    cursor: pointer;
 }
