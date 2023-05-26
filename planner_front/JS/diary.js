@@ -33,10 +33,8 @@ const observerDiary = new MutationObserver(function () {
   const text = document.querySelector('#diaryTextForm');
   if (searchDiaryByDate() != null) {
     text.value = searchDiaryByDate().diary;
-    console.log('found');
   } else {
     text.value = '';
-    console.log('Nor found');
   }
   console.log(text.value);
 });
