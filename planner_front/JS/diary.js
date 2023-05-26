@@ -32,11 +32,13 @@ function searchDiaryByDate() {
 const observerDiary = new MutationObserver(function () {
   const text = document.querySelector('#diaryTextForm');
   if (searchDiaryByDate() != null) {
-    text.innerText = searchDiaryByDate().diary;
+    text.value = searchDiaryByDate().diary;
     console.log('found');
   } else {
-    text.innerText = '';
+    text.value = '';
+    console.log('Nor found');
   }
+  console.log(text.value);
 });
 
 observerDiary.observe(document.querySelector('#diary-date'), {

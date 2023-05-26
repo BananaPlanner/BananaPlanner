@@ -39,6 +39,7 @@ function setVisible() {
     todoTitle.value = '';
     todoContent.value = '';
   } else if (addTodoBtn.classList.contains('closeTextArea')) {
+    document.querySelectorAll('#todoList li label').id = '';
     textArea.classList.add('hidden');
     addTodoBtn.classList.remove('closeTextArea');
     addTodoBtn.classList.add('addTodoListBtn');
@@ -46,6 +47,31 @@ function setVisible() {
     todoList.id = 'todoList';
     todoTitle.value = '';
     todoContent.value = '';
+    const allList = document.querySelectorAll(' li label');
+    for (let list of allList) {
+      list.id = '';
+    }
+  }
+}
+
+function setVisibleTrue() {
+  if (addTodoBtn.classList.contains('addTodoListBtn')) {
+    textArea.classList.remove('hidden');
+    addTodoBtn.classList.remove('addTodoListBtn');
+    addTodoBtn.classList.add('closeTextArea');
+    addTodoBtn.innerText = 'X';
+    todoList.id = 'changedUL';
+  }
+}
+
+function setVisibleFalse() {
+  if (addTodoBtn.classList.contains('closeTextArea')) {
+    document.querySelectorAll('#todoList li label').id = '';
+    textArea.classList.add('hidden');
+    addTodoBtn.classList.remove('closeTextArea');
+    addTodoBtn.classList.add('addTodoListBtn');
+    addTodoBtn.innerText = '+';
+    todoList.id = 'todoList';
   }
 }
 
@@ -69,7 +95,7 @@ function addTodo(event) {
   } else {
     alert('제목과 내용을 써주세요.');
   }
-  setVisible();
+  setVisibleFalse();
 }
 
 function paint(input) {
@@ -89,32 +115,45 @@ function paint(input) {
 }
 
 function setViewTodo(event) {
-  setVisible();
+  const allList = document.querySelectorAll(' li label');
+  for (let list of allList) {
+    list.id = '';
+  }
   const label = event.target;
+  console.log(label);
   const todo = searchTodoTitle(label);
-  todo.selected = !todo.selected;
-  if (todo.selected) {
-    todoTitle.value = todo.title;
-    todoContent.value = todo.content;
-    label.id = 'selectedLabel';
-  } else {
-    todoTitle.value = '';
-    todoContent.value = '';
-    label.id = '';
+  if (todo != null) {
+    todo.selected = !todo.selected;
+    if (todo.selected) {
+      for (let todo_ of todos) {
+        todo_.selected = false;
+      }
+      todo.selected = true;
+      setVisibleTrue();
+      todoTitle.value = todo.title;
+      todoContent.value = todo.content;
+      label.id = 'selectedLabel';
+    } else {
+      for (let todo_ of todos) {
+        todo_.selected = false;
+      }
+      setVisibleFalse();
+      label.id = '';
+      todoTitle.value = '';
+      todoContent.value = '';
+    }
   }
 }
 
 function searchTodoTitle(label) {
   console.log(label.innerText);
   console.log(todos);
-  let found = {};
   for (let todo of todos) {
     if (todo.title === label.innerText) {
-      found = todo;
-      console.log(found);
+      return todo;
     }
   }
-  return found;
+  return null;
 }
 
 function searchTodoByDay(todo) {
@@ -147,14 +186,16 @@ function deleteTodo(event) {
   console.log(deleteTodoIndex);
   todos.splice(deleteTodoIndex, 1);
   localStorage.setItem(TODOS, JSON.stringify(todos));
-  setVisible();
+  setVisibleFalse();
 }
 
 const observerTodo = new MutationObserver(function () {
   const items = todoList.getElementsByTagName('li');
+  savedTodos = localStorage.getItem(TODOS);
   for (let i = 0; i < items.length; i++) items[i].remove();
   if (savedTodos != null) {
     const parsedToDos = JSON.parse(savedTodos);
+    console.log(parsedToDos);
     const selectedDayTodos = [];
     for (let todo of parsedToDos) {
       if (searchTodoByDay(todo) !== null)
@@ -163,7 +204,6 @@ const observerTodo = new MutationObserver(function () {
     selectedDayTodos.forEach(paint);
     console.log(selectedDayTodos);
   }
-  console.log(todos);
 });
 
 observerTodo.observe(todoFullDate, {
@@ -176,7 +216,7 @@ deleteTodoBtn.addEventListener('click', deleteTodo);
 addTodoBtn.addEventListener('click', setVisible);
 saveTodoBtn.addEventListener('click', addTodo);
 
-const savedTodos = localStorage.getItem(TODOS);
+let savedTodos = localStorage.getItem(TODOS);
 
 if (savedTodos != null) {
   const parsedToDos = JSON.parse(savedTodos);
