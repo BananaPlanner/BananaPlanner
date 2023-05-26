@@ -371,6 +371,7 @@ form input{
 }
 
 #selectedLabel{
+    color: white;
     background-color: #422E17;
 }
 
