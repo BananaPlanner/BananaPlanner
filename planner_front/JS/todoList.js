@@ -190,7 +190,7 @@ function deleteTodo(event) {
 }
 
 const observerTodo = new MutationObserver(function () {
-  const items = todoList.getElementsByTagName('li');
+  const items = document.querySelectorAll('ul li');
   savedTodos = localStorage.getItem(TODOS);
   for (let i = 0; i < items.length; i++) items[i].remove();
   if (savedTodos != null) {
@@ -204,6 +204,7 @@ const observerTodo = new MutationObserver(function () {
     selectedDayTodos.forEach(paint);
     console.log(selectedDayTodos);
   }
+  setVisibleFalse();
 });
 
 observerTodo.observe(todoFullDate, {
