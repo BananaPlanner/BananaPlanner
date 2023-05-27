@@ -23,6 +23,7 @@ const todoContent = document.querySelector('#todoContent_input');
 const deleteTodoBtn = document.querySelector('#deleteTodoBtn');
 
 let todos = [];
+let selectedTodoIndex = -1;
 // 제목과 내용, 체크여부
 const TODOS = 'todos';
 
@@ -51,6 +52,7 @@ function setVisible() {
     for (let list of allList) {
       list.id = '';
     }
+    selectedTodoIndex = -1;
   }
 }
 
@@ -66,12 +68,13 @@ function setVisibleTrue() {
 
 function setVisibleFalse() {
   if (addTodoBtn.classList.contains('closeTextArea')) {
-    document.querySelectorAll('#todoList li label').id = '';
+    document.querySelectorAll('li label').id = '';
     textArea.classList.add('hidden');
     addTodoBtn.classList.remove('closeTextArea');
     addTodoBtn.classList.add('addTodoListBtn');
     addTodoBtn.innerText = '+';
     todoList.id = 'todoList';
+    selectedTodoIndex = -1;
   }
 }
 
@@ -79,22 +82,42 @@ function addTodo(event) {
   event.preventDefault();
   const title_ = todoTitle.value;
   const content_ = todoContent.value;
+  const listLabel = document.querySelectorAll('li label');
+  for (let i = 0; i < listLabel.length; i++) {
+    if (listLabel[i].id === 'selectedLabel') {
+      selectedTodoIndex = i;
+    }
+  }
+  console.log(selectedTodoIndex);
+  if (selectedTodoIndex != -1) {
+    todos[selectedTodoIndex].title = title_;
+    todos[selectedTodoIndex].content = content_;
+    console.log(todos[selectedTodoIndex]);
+    for (let i of listLabel) {
+      if (i.id === 'selectedLabel') {
+        i.innerText = title_;
+      }
+      i.id = '';
+    }
+    localStorage.setItem(TODOS, JSON.stringify(todos));
+  } else {
+    const input = {
+      date: todoFullDate.innerHTML,
+      title: title_,
+      content: content_,
+      check: false,
+      selected: false,
+    };
+    if (title_ != '' || content_ != '') {
+      todos.push(input);
+      localStorage.setItem(TODOS, JSON.stringify(todos));
+      paint(input);
+    } else {
+      alert('제목과 내용을 써주세요.');
+    }
+  }
   todoTitle.value = '';
   todoContent.value = '';
-  const input = {
-    date: todoFullDate.innerHTML,
-    title: title_,
-    content: content_,
-    check: false,
-    selected: false,
-  };
-  if (title_ != '' && content_ != '') {
-    todos.push(input);
-    localStorage.setItem(TODOS, JSON.stringify(todos));
-    paint(input);
-  } else {
-    alert('제목과 내용을 써주세요.');
-  }
   setVisibleFalse();
 }
 
@@ -102,16 +125,28 @@ function paint(input) {
   const li = document.createElement('li');
   const text = document.createElement('input');
   text.value = input.title;
-  text.type = 'radio';
+  text.type = 'checkbox';
   text.checked = input.check;
   text.selected = input.selected;
   const label = document.createElement('label');
   label.innerText = input.title;
   label.for = input.title;
+  text.value = input.title;
+  text.addEventListener('click', setCheck);
   li.appendChild(text);
   li.appendChild(label);
   todoList.appendChild(li);
   label.addEventListener('click', setViewTodo);
+}
+
+function setCheck(event) {
+  const todo = searchTodoTitleValue(event.target.value);
+  if (todo != null) {
+    todo.check = event.target.checked;
+    localStorage.setItem(TODOS, JSON.stringify(todos));
+  } else {
+    console.log('not found');
+  }
 }
 
 function setViewTodo(event) {
@@ -120,7 +155,6 @@ function setViewTodo(event) {
     list.id = '';
   }
   const label = event.target;
-  console.log(label);
   const todo = searchTodoTitle(label);
   if (todo != null) {
     todo.selected = !todo.selected;
@@ -129,6 +163,7 @@ function setViewTodo(event) {
         todo_.selected = false;
       }
       todo.selected = true;
+      selectedTodoIndex = searchTodoIndex(label);
       setVisibleTrue();
       todoTitle.value = todo.title;
       todoContent.value = todo.content;
@@ -146,10 +181,18 @@ function setViewTodo(event) {
 }
 
 function searchTodoTitle(label) {
-  console.log(label.innerText);
-  console.log(todos);
   for (let todo of todos) {
     if (todo.title === label.innerText) {
+      return todo;
+    }
+  }
+  return null;
+}
+
+function searchTodoTitleValue(label) {
+  console.log(label);
+  for (let todo of todos) {
+    if (todo.title === label) {
       return todo;
     }
   }
@@ -164,15 +207,10 @@ function searchTodoByDay(todo) {
 }
 
 function searchTodoIndex(label) {
-  console.log(label.innerText);
-  let found = {};
   let index = -1;
-  let check = false;
-  for (let todo of todos) {
-    if (!check) index++;
-    if (todo.title === label.innerText) {
-      found = todo;
-      check = !check;
+  for (let i = 0; i < todos.length; i++) {
+    if (todos[i].title === label) {
+      index = i;
     }
   }
   return index;
@@ -181,11 +219,19 @@ function searchTodoIndex(label) {
 function deleteTodo(event) {
   event.preventDefault();
   const deleteTodoTitle = todoTitle.value;
-  console.log(deleteTodoTitle);
   const deleteTodoIndex = searchTodoIndex(deleteTodoTitle);
   console.log(deleteTodoIndex);
   todos.splice(deleteTodoIndex, 1);
   localStorage.setItem(TODOS, JSON.stringify(todos));
+  const listLabel = document.querySelectorAll('li label');
+  const list = document.querySelectorAll('li');
+  for (let i = 0; i < listLabel.length; i++) {
+    if (listLabel[i].id === 'selectedLabel') {
+      console.log(list[i]);
+      list[i].remove();
+    }
+    i.id = '';
+  }
   setVisibleFalse();
 }
 
@@ -195,14 +241,12 @@ const observerTodo = new MutationObserver(function () {
   for (let i = 0; i < items.length; i++) items[i].remove();
   if (savedTodos != null) {
     const parsedToDos = JSON.parse(savedTodos);
-    console.log(parsedToDos);
     const selectedDayTodos = [];
     for (let todo of parsedToDos) {
       if (searchTodoByDay(todo) !== null)
         selectedDayTodos.push(searchTodoByDay(todo));
     }
     selectedDayTodos.forEach(paint);
-    console.log(selectedDayTodos);
   }
   setVisibleFalse();
 });
