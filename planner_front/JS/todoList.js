@@ -52,6 +52,7 @@ function setVisible() {
     for (let list of allList) {
       list.id = '';
     }
+    selectedTodoIndex = -1;
   }
 }
 
@@ -73,6 +74,7 @@ function setVisibleFalse() {
     addTodoBtn.classList.add('addTodoListBtn');
     addTodoBtn.innerText = '+';
     todoList.id = 'todoList';
+    selectedTodoIndex = -1;
   }
 }
 
@@ -80,10 +82,17 @@ function addTodo(event) {
   event.preventDefault();
   const title_ = todoTitle.value;
   const content_ = todoContent.value;
+  const listLabel = document.querySelectorAll('li label');
+  for (let i = 0; i < listLabel.length; i++) {
+    if (listLabel[i].id === 'selectedLabel') {
+      selectedTodoIndex = i;
+    }
+  }
+  console.log(selectedTodoIndex);
   if (selectedTodoIndex != -1) {
     todos[selectedTodoIndex].title = title_;
     todos[selectedTodoIndex].content = content_;
-    const listLabel = document.querySelectorAll('li label');
+    console.log(todos[selectedTodoIndex]);
     for (let i of listLabel) {
       if (i.id === 'selectedLabel') {
         i.innerText = title_;
@@ -198,14 +207,10 @@ function searchTodoByDay(todo) {
 }
 
 function searchTodoIndex(label) {
-  let found = {};
   let index = -1;
-  let check = false;
-  for (let todo of todos) {
-    if (!check) index++;
-    if (todo.title === label.innerText) {
-      found = todo;
-      check = !check;
+  for (let i = 0; i < todos.length; i++) {
+    if (todos[i].title === label) {
+      index = i;
     }
   }
   return index;
@@ -215,8 +220,18 @@ function deleteTodo(event) {
   event.preventDefault();
   const deleteTodoTitle = todoTitle.value;
   const deleteTodoIndex = searchTodoIndex(deleteTodoTitle);
+  console.log(deleteTodoIndex);
   todos.splice(deleteTodoIndex, 1);
   localStorage.setItem(TODOS, JSON.stringify(todos));
+  const listLabel = document.querySelectorAll('li label');
+  const list = document.querySelectorAll('li');
+  for (let i = 0; i < listLabel.length; i++) {
+    if (listLabel[i].id === 'selectedLabel') {
+      console.log(list[i]);
+      list[i].remove();
+    }
+    i.id = '';
+  }
   setVisibleFalse();
 }
 
