@@ -212,6 +212,7 @@ function setViewTodo(event) {
       todo.selected = true;
       /* searchTodoIndex함수를 통해 event가 발생한 target값을 가진 todo의 index값 반환 */
       selectedTodoIndex = searchTodoIndex(label);
+      console.log(selectedTodoIndex);
       /* textBox를 강제로 열고 해당 투두의 제목과 내용이 입력됨 */
       setVisibleTrue();
       todoTitle.value = todo.title;
@@ -265,7 +266,9 @@ function searchTodoByDay(todo) {
 function searchTodoIndex(label) {
   let index = -1;
   for (let i = 0; i < todos.length; i++) {
-    if (todos[i].title === label) {
+    console.log(todos[i]);
+    console.log(label.innerText);
+    if (todos[i].title == label.innerText) {
       index = i;
     }
   }
