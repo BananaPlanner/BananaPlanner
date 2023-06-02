@@ -92,6 +92,7 @@ window.onload = function () {
       let dateString = `${currentDate.getFullYear()}-${
         currentDate.getMonth() + 1
       }-${e.target.innerText.split('\n')[0]}`;
+      loadTodos(dateString);
 
       /*       document.getElementById('displayBox').innerText = dateString; */
     });

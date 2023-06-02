@@ -78,6 +78,43 @@ function setVisibleFalse() {
   }
 }
 
+
+
+function updateTodoCount(dateString) {
+  let dayText = selectedDay.innerText.split('\n')[0];
+  if (todos[dateString] && todos[dateString].length > 0) {
+      let todoCount = todos[dateString].length;
+      selectedDay.innerHTML = `${dayText}<br/>할일: ${todoCount}`;
+  } else {
+      selectedDay.innerHTML = dayText;
+  }
+  if((selectedDay.innerHTML).match(/할일: (\d+)/)[1]){
+    selectedDay.innerHTML = `${dayText}<br/>할일:`;
+  }
+}
+
+
+let isDateString = "";
+function loadTodos(dateString){
+  isDateString = dateString;
+}
+
+function updateTodoCount(){
+  let test = 0;
+  const listLabel = document.querySelectorAll('li label');
+  for (let i = 0; i < listLabel.length; i++) {
+    test++;
+  }
+  let dayText = selectedDay.innerText.split('\n')[0];
+  if (todos.length > 0) {
+    let todoCount = todos.length;
+    selectedDay.innerHTML = `${dayText}<br/>할일: ${test}`;
+  } else {
+      selectedDay.innerHTML = dayText;
+  }
+}
+
+
 function addTodo(event) {
   event.preventDefault();
   const title_ = todoTitle.value;
@@ -88,11 +125,11 @@ function addTodo(event) {
       selectedTodoIndex = i;
     }
   }
-  console.log(selectedTodoIndex);
+
   if (selectedTodoIndex != -1) {
     todos[selectedTodoIndex].title = title_;
     todos[selectedTodoIndex].content = content_;
-    console.log(todos[selectedTodoIndex]);
+
     for (let i of listLabel) {
       if (i.id === 'selectedLabel') {
         i.innerText = title_;
@@ -119,6 +156,9 @@ function addTodo(event) {
   todoTitle.value = '';
   todoContent.value = '';
   setVisibleFalse();
+
+  updateTodoCount();
+
 }
 
 function paint(input) {
@@ -201,7 +241,9 @@ function searchTodoTitleValue(label) {
 
 function searchTodoByDay(todo) {
   const todoDay = todo.date;
-  if (todoDay === todoFullDate.innerHTML) {
+
+  if (parseInt(todoDay.split(" ")[2]) === parseInt(todoFullDate.innerHTML.split(" ")[2])) {
+
     return todo;
   } else return null;
 }
@@ -220,7 +262,9 @@ function deleteTodo(event) {
   event.preventDefault();
   const deleteTodoTitle = todoTitle.value;
   const deleteTodoIndex = searchTodoIndex(deleteTodoTitle);
-  console.log(deleteTodoIndex);
+
+  //console.log(deleteTodoIndex);
+
   todos.splice(deleteTodoIndex, 1);
   localStorage.setItem(TODOS, JSON.stringify(todos));
   const listLabel = document.querySelectorAll('li label');
@@ -233,6 +277,9 @@ function deleteTodo(event) {
     i.id = '';
   }
   setVisibleFalse();
+
+  updateTodoCount();
+
 }
 
 const observerTodo = new MutationObserver(function () {

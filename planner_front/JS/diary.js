@@ -36,8 +36,9 @@ const observerDiary = new MutationObserver(function () {
   } else {
     text.value = '';
   }
-  console.log(text.value);
-});
+
+  //console.log(text.value);
+
 
 observerDiary.observe(document.querySelector('#diary-date'), {
   subtree: true,
