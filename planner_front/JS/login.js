@@ -7,28 +7,28 @@ function tryLogin() {
   console.log(idText);
   console.log(pwText);
 
-  if(idText == "" || pwText == ""){
+  if (idText == '' || pwText == '') {
     return false;
   }
 
   var loginResult = checkLogin(idText, pwText);
-  if(loginResult){
+  if (loginResult) {
     // window.location.href = './index.html';
-    window.location.replace("./index.html");
+    window.location.replace('index.html');
   }
 }
 
 function enterLogin(e) {
-  if(e.keyCode == 13){
+  if (e.keyCode == 13) {
     tryLogin();
   }
 }
 
-function checkLogin(id, pw){
+function checkLogin(id, pw) {
   var checkInfo = false;
 
-  if(id==pw){
+  if (id == pw) {
     checkInfo = true;
-  } 
+  }
   return checkInfo;
 }
