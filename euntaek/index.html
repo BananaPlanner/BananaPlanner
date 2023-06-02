@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    
+    <!-- 헤더부분은 달력이전으로 돌아가는 왼쪽 오른쪽 귀 버튼과 해당 년월 알려주는 원숭이 머리(헤더)부분으로
+    이루어져 있습니다. <기호랑 >기호는 인식이 안되서 찾아보니 &lt; &gt;으로 각각 표현할 수 있더라구요.(근데 어차피 &lt;
+    쓰고 오른쪽귀는 180도 회전해버려야해서 그냥 똑같이 썼습니다.)
+    nav-button-left 그리고 nav-button-right가 각각 귀 버튼이고 각각의 -z div태그는 원숭이 귀처럼 표현하기 
+    위해서 css처리 한겁니다. -->
+    <header>
+        <h1 id="title" >BANANA<br>PLANNER</h1>
+        <div id="nav-button-left-z">
+            <button id="prevButton" class="nav-button-left">&lt;</button>
+        </div>
+
+        <div id="nav-button-head-z">
+            <h1 id="monthYearDisplay"></h1>
+            <div id="nav-button-head">
+            </div>
+        </div>
+
+        <div id="nav-button-right-z">
+            <button id="nextButton" class="nav-button-right">&lt;</button>
+        </div>
+    </header>
+
+    <!-- 메인 태그 안에는 간단히 달력 감싸주는 div태그랑 달력, 그리고 테스트로 달력 일자 클릭시 일자 나오도록
+        했습니다. calendar-wrapper가 달력 감싸주는 블럭요소, calendar가 달력 요소 입니다.
+        displayBox가 이제 달력 일자 클릭히 해당 일자 텍스트 나오는 블럭 요소입니다. -->
+    <main>
+        <div class="calendar-wrapper">
+            <div id="calendar" class="calendar"></div>
+        </div>
+        <div id="displayBox" class="display-box"></div>
+    </main>
+
+    <script src="calendar.js"></script>
+</body>
+</html>

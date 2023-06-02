@@ -1,0 +1,449 @@
+@font-face {
+    font-family: 'CookieRun-Regular';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/CookieRun-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+  }
+  @font-face {
+    font-family: 'SUIT-Regular';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_suit@1.0/SUIT-Regular.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+  }
+  @import url('https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&display=swap');
+
+body{
+    background-color: #FFFBB2;
+    width: 100%;
+    height: 100%;
+}
+
+#title{
+
+    position: relative;
+    right: 150px;
+    top: 50px;
+    height: 70px;
+
+    font-family: 'CookieRun';
+    font-style: normal;
+    font-weight: 900;
+    font-size: 30px;
+    line-height: 97.02%;
+
+    letter-spacing: 0.1em;
+
+    color: rgba(31, 14, 14, 0.76);
+}
+
+#monthYearDisplay{
+    position: relative;
+    left: 250px;
+    font-family: 'CookieRun';
+    font-style: normal;
+    font-weight: 900;
+    font-size: 50px;
+    line-height: 68px;
+    color: #422E17;
+}
+
+header{
+    position: relative;
+    left: 300px;
+    top: 20px;
+    display: flex;
+}
+
+main{
+    position: relative;
+    top: -70px;
+    left: 50px;
+    display: flex;
+    min-width: 1972px;
+}
+
+.calendar-wrapper {
+    background-color: #98FB98; /* PaleGreen color */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 1272px;
+
+    background: #FEF38D;
+    box-shadow: 2px 5px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 25px;
+}
+
+.calendar {
+    display: flex;
+    flex-wrap: wrap;
+    width: 99%;
+}
+
+.display-box {
+    /* position: relative; */
+    /* left: 50px; */
+  
+    font-size: 2em;
+    width: 450px;
+    height: 775px;
+
+    background: #FEF38D;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 45px;
+}
+
+.weekday{
+    margin: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 169.75px;
+    height: 126.22px;
+    box-sizing: border-box;
+}
+
+.day {
+    margin: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 125px;
+    box-sizing: border-box;
+    cursor: pointer;
+
+    width: 169.75px;
+    height: 126.22px;
+
+
+    background: #FFFEDF;
+    border-radius: 20px;
+}
+
+.day:hover {
+    background-color: #eee;
+}
+
+.nav-button-left {
+    margin: 12px;
+
+    cursor: pointer;
+    border: none;
+
+    width: 87.33px;
+    height: 92.64px;
+
+    background: #FFFACF;
+    border-radius: 52px 30px 33px 52px;
+    transform: matrix(1, 0, 0, -1, 0, 0);
+}
+
+.nav-button-right {
+    margin: 12px;
+
+    cursor: pointer;
+    border: none;
+
+    width: 87.33px;
+    height: 92.64px;
+    
+    background: #FFFACF;
+    border-radius: 52px 30px 33px 52px;
+}
+
+#nav-button-left-z {
+    position: relative;
+    top: 35px;
+    right: 10px;
+
+    width: 110px;
+    height: 116px;
+    
+    background: #B0995D;
+    box-shadow: 2px 2px 4px rgba(87, 45, 2, 0.55);
+    border-radius: 62.5px 20px 20px 62.5px;
+    transform: matrix(1, 0, 0, -1, 0, 0);
+}
+
+#nav-button-right-z {
+    position: relative;
+    top: 35px;
+    left: 10px;
+
+    width: 110px;
+    height: 116px;
+    
+    background: #B0995D;
+    box-shadow: 2px 2px 4px rgba(87, 45, 2, 0.55);
+    border-radius: 62.5px 20px 20px 62.5px;
+    transform: rotate(-180deg);
+}
+
+#nav-button-head-z {
+    width: 785px;
+    height: 150px;
+    
+    background: #B0995D;
+    border-radius: 60px 60px 9px 9px;
+}
+
+#nav-button-head {
+    position: relative;
+    bottom: 13px;
+
+    width: 747px;
+    height: 29px;
+    
+    background: #FFFACF;
+    border-radius: 60px 60px 14.5px 14.5px;
+}
+
+.tail {
+    margin-left: 300px;
+    margin-right: 50px;
+  }
+
+#todoList-div{
+    width: 450px;
+    height: 775px;
+    margin: 0 auto;
+
+    background: #FEF38D;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 45px;
+}
+
+#todoList-date, #diary-date{
+    position: relative;
+    width: 300px;
+    height: 36px;
+    margin: 0 auto;
+    padding-top: 32px;
+    padding-bottom: 26px;
+
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 25px;
+    line-height: 36px;
+    text-align: center;
+
+    color: #422E17;
+}
+
+#todoList{
+    margin-bottom: 0;
+    height: 580px;
+}
+
+.addTodoListBtn{
+    position: relative;
+    left: 30px;
+    width: 394px;
+    height: 54px;
+
+    font-size: 40px;
+
+    background: #B0995D;
+    border-radius: 5px 5px 20px 20px;
+    color: white;
+}
+
+.closeTextArea{
+    position: relative;
+    left: 30px;
+    bottom: 10px;
+    width: 394px;
+    height: 54px;
+    margin: 0 auto;
+    
+    background: #B0995D;
+    color: white;
+    border-radius: 5px 5px 20px 20px;
+    transform: rotate(180deg);
+}
+
+#textArea{
+    position: relative;
+    bottom: 10px;
+    width: 394px;
+    height: 371px;
+    margin: 0 auto;
+
+    background: #B0995D;
+    border-radius: 5px 5px 20px 20px;
+}
+
+.hidden{
+    display: none;
+}
+
+#todoTitle{
+    box-sizing: border-box;
+
+    width: 342px;
+    height: 41px;
+    margin: 0 auto;
+    margin-bottom: 10px;
+    
+    background: #B0995D;
+    border: 1px solid #422E17;
+    border-radius: 10px 10px 3px 3px;
+}
+
+#todoTitle input{
+    width: 290px;
+    height: 30px;
+    border: none;
+    background: transparent;
+}
+
+#todoContent{
+    box-sizing: border-box;
+
+    width: 342px;
+    height: 285px;
+    margin: 0 auto;
+    
+    background: #B0995D;
+    border: 1px solid #422E17;
+    border-radius: 10px 10px 3px 3px;
+}
+
+#todoContent input{
+    width: 320px;
+    height: 250px;
+
+    background: transparent;
+    border: none;
+}
+
+#saveTodoBtn{
+    background-color: transparent;
+    border: none;
+    position: relative;
+    width: 26px;
+    height: 25px;
+    top: 5px;
+}
+
+#deleteTodoBtn{
+    background-color: transparent;
+    position: relative;
+    width: 14px;
+    height: 0px;
+    top: -7px;
+    left: 330px;
+
+    border: 1px solid #B0995D;
+    transform: rotate(90deg);
+}
+
+#deleteTodoBtn img{
+    transform: rotate(270deg);
+}
+
+li{
+    list-style: none;
+    text-align: left;
+    padding-bottom: 15px;
+}
+
+li :first-child{
+    font-family: 'SUIT';
+    font-style: normal;
+    padding-top: 24px;
+}
+
+ul{
+    height: 640px;
+}
+
+#changedUL{
+    height: 200px;
+}
+
+form input{
+    font-family: 'Inter';
+
+    color: white;
+}
+
+#selectedLabel{
+    color: white;
+    background-color: #422E17;
+}
+
+.rightBox {
+    margin-left: 50px;
+}
+
+#calendarBtn, #changeBtn {
+    width: 120px;
+    height: 25px;
+    font-family: 'CookieRun';
+    margin-left: 30px;
+    
+    background: #ACE292;
+    color: #3E6B28;
+    font-weight: 600;
+    font-size: 13px;
+    border-radius: 10px 10px 0px 0px;
+    border: none;
+    cursor: pointer;
+}
+
+.editImg{
+    width: 30px;
+}
+
+#diaryText{
+    margin: 0 auto;
+}
+
+#diaryTextForm{
+    position: relative;
+    height: 600px;
+    width: 400px;
+    left: 23px;
+    border: 1px solid #422E17;
+    border-radius: 10px 10px 10px 10px;
+    background: transparent;
+    font-size: 23px;
+    font-family: SUIT-Regular;
+    resize: none;
+    outline: none;
+}
+
+#saveDiaryBtn{
+    background-color: transparent;
+    border: none;
+    position: relative;
+    left: 400px;
+    bottom: 20px;
+}
+
+.weeklyCalendar {
+    display: flex;
+    flex-wrap: wrap;
+    width: 99%;
+}
+
+.weeklyWrapper {
+    width: 1272px;
+}
+
+.weeklyDay {
+    margin: 5px;
+    text-align: center;
+    box-sizing: border-box;
+    cursor: pointer;
+
+    width: 169.75px;
+    height: 630px;
+
+
+    background: #FFFEDF;
+    border-radius: 20px;
+}
