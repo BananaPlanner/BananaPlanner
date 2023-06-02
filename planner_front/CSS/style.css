@@ -253,7 +253,7 @@ main{
 .closeTextArea{
     position: relative;
     left: 30px;
-    bottom: 10px;
+    bottom: 35px;
     width: 394px;
     height: 54px;
     margin: 0 auto;
@@ -266,9 +266,9 @@ main{
 
 #textArea{
     position: relative;
-    bottom: 10px;
+    bottom: 30px;
     width: 394px;
-    height: 371px;
+    height: 380px;
     margin: 0 auto;
 
     background: #B0995D;
