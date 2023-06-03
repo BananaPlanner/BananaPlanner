@@ -412,8 +412,11 @@ form input{
     background: transparent;
     font-size: 23px;
     font-family: SUIT-Regular;
+<<<<<<< HEAD
     resize: none;
     outline: none;
+=======
+>>>>>>> da4d265 (feature-euntaek2)
 }
 
 #saveDiaryBtn{
@@ -422,6 +425,7 @@ form input{
     position: relative;
     left: 400px;
     bottom: 20px;
+<<<<<<< HEAD
 }
 
 .weeklyCalendar {
@@ -446,4 +450,6 @@ form input{
 
     background: #FFFEDF;
     border-radius: 20px;
+=======
+>>>>>>> da4d265 (feature-euntaek2)
 }
