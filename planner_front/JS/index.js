@@ -1,3 +1,29 @@
+<<<<<<< HEAD
+<<<<<<< HEAD
+var monthlyMode = true;
+
+window.onload = onloadMonthly();
+
+function changeCalendarView() {
+  const calendarBtn = document.getElementById('calendarBtn');
+  const monthly = document.getElementById('monthlyDiv');
+  const weekly = document.getElementById('weeklyDiv');
+
+  if (monthlyMode) {
+    calendarBtn.value = 'MONTHLY';
+    weekly.classList.remove('hidden');
+    monthly.classList.add('hidden');
+    monthlyMode = false;
+    loadWeeklyCalendar(currentDate);
+  } else {
+    calendarBtn.value = 'WEEKLY';
+    monthly.classList.remove('hidden');
+    weekly.classList.add('hidden');
+    monthlyMode = true;
+    onloadMonthly();
+=======
+=======
+>>>>>>> da4d2651a32a4efcd5c6b802f29458ba1c9bfec7
 // function saveDiary() {
 //   const textarea = document.getElementById('textForm')
 //   const content = textarea.value;
@@ -16,6 +42,10 @@ function changeCalendarView() {
   } else {
     calendarBtn.value = 'WEEKLY';
     monthlyMode = true;
+<<<<<<< HEAD
+>>>>>>> da4d265 (feature-euntaek2)
+=======
+>>>>>>> da4d2651a32a4efcd5c6b802f29458ba1c9bfec7
   }
 }
 
@@ -37,5 +67,32 @@ function changeView() {
     todoList.classList.remove('hidden');
     todoListMode = true;
   }
+<<<<<<< HEAD
+<<<<<<< HEAD
+}
+const nextWeek = document.getElementById('nextButton');
+const prevWeek = document.getElementById('prevButton');
+
+nextWeek.addEventListener('click', function(){
+  if(monthlyMode){
+    clickNextMonth();
+  } else{
+    clickNextWeek();
+  }
+});
+
+prevWeek.addEventListener('click', function(){
+  if(monthlyMode){
+    clickPrevMonth();
+  } else{
+    clickPrevWeek();
+  }
+});
+=======
   console.log('changeView');
 }
+>>>>>>> da4d265 (feature-euntaek2)
+=======
+  console.log('changeView');
+}
+>>>>>>> da4d2651a32a4efcd5c6b802f29458ba1c9bfec7
