@@ -83,16 +83,25 @@ function setVisibleFalse() {
 
 
 function updateTodoCount(dateString) {
-  let dayText = selectedDay.innerText.split('\n')[0];
-  if (todos[dateString] && todos[dateString].length > 0) {
-      let todoCount = todos[dateString].length;
-      selectedDay.innerHTML = `${dayText}<br/>할일: ${todoCount}`;
-  } else {
-      selectedDay.innerHTML = dayText;
+  // let dayText = selectedDay.innerText.split('\n')[0];
+  // if (todos[dateString] && todos[dateString].length > 0) {
+  //     let todoCount = todos[dateString].length;
+  //     selectedDay.innerHTML = `${dayText}<br/>할일: ${todoCount}`;
+  // } else {
+  //     selectedDay.innerHTML = dayText;
+  // }
+  // if((selectedDay.innerHTML).match(/할일: (\d+)/)[1]){
+  //   selectedDay.innerHTML = `${dayText}<br/>할일:`;
+  // }
+  const savedTodo = localStorage.getItem('todos');
+  const parsedToDo = JSON.parse(savedTodo);
+  let selectedDayTodo = [];
+
+  for (let todo of parsedToDo) {
+    if (searchTodo(todo, dateString) !== null)
+      selectedDayTodo.push(todo);
   }
-  if((selectedDay.innerHTML).match(/할일: (\d+)/)[1]){
-    selectedDay.innerHTML = `${dayText}<br/>할일:`;
-  }
+  selectedDay.innerHTML = `${dayText}<br/>할일: ${selectedDayTodo.length}`;
 }
 
 

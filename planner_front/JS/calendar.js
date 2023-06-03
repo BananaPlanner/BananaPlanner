@@ -61,21 +61,12 @@ function loadCalendar(date) {
       /*       displayBox.innerText = `${year}-${month + 1}-${e.target.innerText}`; */
     });
   }
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
 
->>>>>>> da4d265 (feature-euntaek2)
-=======
-
->>>>>>> da4d2651a32a4efcd5c6b802f29458ba1c9bfec7
   document.getElementById('monthYearDisplay').innerText = `${year}년 ${
     month + 1
   }월`;
 }
 
-<<<<<<< HEAD
-<<<<<<< HEAD
 // window.onload = function () {
   // 
 // };
@@ -83,26 +74,7 @@ function loadCalendar(date) {
 function onloadMonthly(){
   loadCalendar(currentDate);
 
-=======
-=======
->>>>>>> da4d2651a32a4efcd5c6b802f29458ba1c9bfec7
-window.onload = function () {
-  loadCalendar(currentDate);
 
-  document.getElementById('nextButton').addEventListener('click', function () {
-    currentDate.setMonth(currentDate.getMonth() + 1);
-    loadCalendar(currentDate);
-  });
-
-  document.getElementById('prevButton').addEventListener('click', function () {
-    currentDate.setMonth(currentDate.getMonth() - 1);
-    loadCalendar(currentDate);
-  });
-
-<<<<<<< HEAD
->>>>>>> da4d265 (feature-euntaek2)
-=======
->>>>>>> da4d2651a32a4efcd5c6b802f29458ba1c9bfec7
   let dayDivs = document.getElementsByClassName('day');
   for (let i = 0; i < dayDivs.length; i++) {
     dayDivs[i].addEventListener('click', function (e) {
@@ -112,16 +84,16 @@ window.onload = function () {
       selectedDay = e.target;
       selectedDay.style.backgroundColor = 'yellow';
 
-      let dateString = `${currentDate.getFullYear()}-${
-        currentDate.getMonth() + 1
-      }-${e.target.innerText.split('\n')[0]}`;
+      let dateString = new Date(currentDate.getFullYear(), currentDate.getMonth()+1, e.target.innerText.split('\n')[0]);
+
+      // let dateString = `${currentDate.getFullYear()}년 ${
+      //   currentDate.getMonth() + 1
+      // }월 ${e.target.innerText.split('\n')[0]}일`;
       loadTodos(dateString);
 
       /*       document.getElementById('displayBox').innerText = dateString; */
     });
   }
-<<<<<<< HEAD
-<<<<<<< HEAD
 }
 
 function clickNextMonth(){
@@ -141,9 +113,4 @@ function clickPrevMonth(){
 //   currentDate.setMonth(currentDate.getMonth() - 1);
 //   loadCalendar(currentDate);
 // });
-=======
-};
->>>>>>> da4d265 (feature-euntaek2)
-=======
-};
->>>>>>> da4d2651a32a4efcd5c6b802f29458ba1c9bfec7
+
