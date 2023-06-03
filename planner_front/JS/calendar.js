@@ -62,14 +62,19 @@ function loadCalendar(date) {
     });
   }
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 
 >>>>>>> da4d265 (feature-euntaek2)
+=======
+
+>>>>>>> da4d2651a32a4efcd5c6b802f29458ba1c9bfec7
   document.getElementById('monthYearDisplay').innerText = `${year}년 ${
     month + 1
   }월`;
 }
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 // window.onload = function () {
   // 
@@ -79,6 +84,8 @@ function onloadMonthly(){
   loadCalendar(currentDate);
 
 =======
+=======
+>>>>>>> da4d2651a32a4efcd5c6b802f29458ba1c9bfec7
 window.onload = function () {
   loadCalendar(currentDate);
 
@@ -92,7 +99,10 @@ window.onload = function () {
     loadCalendar(currentDate);
   });
 
+<<<<<<< HEAD
 >>>>>>> da4d265 (feature-euntaek2)
+=======
+>>>>>>> da4d2651a32a4efcd5c6b802f29458ba1c9bfec7
   let dayDivs = document.getElementsByClassName('day');
   for (let i = 0; i < dayDivs.length; i++) {
     dayDivs[i].addEventListener('click', function (e) {
@@ -110,6 +120,7 @@ window.onload = function () {
       /*       document.getElementById('displayBox').innerText = dateString; */
     });
   }
+<<<<<<< HEAD
 <<<<<<< HEAD
 }
 
@@ -133,3 +144,6 @@ function clickPrevMonth(){
 =======
 };
 >>>>>>> da4d265 (feature-euntaek2)
+=======
+};
+>>>>>>> da4d2651a32a4efcd5c6b802f29458ba1c9bfec7

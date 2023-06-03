@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 var monthlyMode = true;
 
 window.onload = onloadMonthly();
@@ -21,6 +22,8 @@ function changeCalendarView() {
     monthlyMode = true;
     onloadMonthly();
 =======
+=======
+>>>>>>> da4d2651a32a4efcd5c6b802f29458ba1c9bfec7
 // function saveDiary() {
 //   const textarea = document.getElementById('textForm')
 //   const content = textarea.value;
@@ -39,7 +42,10 @@ function changeCalendarView() {
   } else {
     calendarBtn.value = 'WEEKLY';
     monthlyMode = true;
+<<<<<<< HEAD
 >>>>>>> da4d265 (feature-euntaek2)
+=======
+>>>>>>> da4d2651a32a4efcd5c6b802f29458ba1c9bfec7
   }
 }
 
@@ -61,6 +67,7 @@ function changeView() {
     todoList.classList.remove('hidden');
     todoListMode = true;
   }
+<<<<<<< HEAD
 <<<<<<< HEAD
 }
 const nextWeek = document.getElementById('nextButton');
@@ -85,3 +92,7 @@ prevWeek.addEventListener('click', function(){
   console.log('changeView');
 }
 >>>>>>> da4d265 (feature-euntaek2)
+=======
+  console.log('changeView');
+}
+>>>>>>> da4d2651a32a4efcd5c6b802f29458ba1c9bfec7

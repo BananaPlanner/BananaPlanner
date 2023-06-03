@@ -1,4 +1,6 @@
-// todolist-end
+
+// todolist-end2
+
 const todoFullDate = document.querySelector('#todoList-date');
 const diaryDate = document.querySelector('#diary-date');
 const today = new Date();
