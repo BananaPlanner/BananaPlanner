@@ -43,21 +43,25 @@ function loadCalendar(date) {
       selectedDay = e.target;
       selectedDay.style.backgroundColor = 'yellow';
       let week = [
-        '목요일',
-        '금요일',
-        '토요일',
+        
         '일요일',
         '월요일',
         '화요일',
         '수요일',
+        '목요일',
+        '금요일',
+        '토요일',
+
       ];
-      let day = week[new Date(year, month + 1, e.target.innerText).getDay()];
+      const k = e.target.innerText.split('\n');
+
+      let day = week[new Date(year, month, k[0]).getDay()];
       document.querySelector('#todoList-date').innerText = `${year}년 ${
         month + 1
-      }월 ${e.target.innerText}일 ${day}`;
+      }월 ${k[0]}일 ${day}`;
       document.querySelector('#diary-date').innerText = `${year}년 ${
         month + 1
-      }월 ${e.target.innerText}일 ${day}`;
+      }월 ${k[0]}일 ${day}`;
       /*       displayBox.innerText = `${year}-${month + 1}-${e.target.innerText}`; */
     });
   }
@@ -84,16 +88,16 @@ function onloadMonthly(){
       selectedDay = e.target;
       selectedDay.style.backgroundColor = 'yellow';
 
-      let dateString = new Date(currentDate.getFullYear(), currentDate.getMonth()+1, e.target.innerText.split('\n')[0]);
+      let dateString = new Date(currentDate.getFullYear(), currentDate.getMonth(), e.target.innerText.split('\n')[0]);
 
       // let dateString = `${currentDate.getFullYear()}년 ${
       //   currentDate.getMonth() + 1
       // }월 ${e.target.innerText.split('\n')[0]}일`;
       loadTodos(dateString);
-
-      /*       document.getElementById('displayBox').innerText = dateString; */
+      updateTodoCount(dateString);
     });
   }
+
 }
 
 function clickNextMonth(){

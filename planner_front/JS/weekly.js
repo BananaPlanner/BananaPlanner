@@ -16,14 +16,12 @@ function loadWeeklyCalendar(date) {
   for (var i = today; i < 7; i++) {
     weekArr[i] = new Date(year, month, todayDate + addDay);
 	  addDay++;
-    console.log("날짜 세팅: " +weekArr[i]);
   }
 
   var addDay = 0;
 	for (var i = today - 1; i >= 0; i--) {
 		--addDay;
 		weekArr[i] = new Date(year, month, todayDate + addDay);
-    console.log("날짜 세팅: " + weekArr[i]);
 	}
 
   let calendarHtml = '';
@@ -35,7 +33,6 @@ function loadWeeklyCalendar(date) {
   for (var i = 0; i < 7; i++) {
 		let weekDay =  weekArr[i].getDate();
     let weekToday = weekArr[i];
-    console.log("weekDate: "+ weekToday);
     calendarHtml += `<div class='weeklyDay'>`;
     calendarHtml += `<div class='weekDate'>${weekDay}</div>`;
     calendarHtml += `<div class='todayList'>`;
@@ -112,7 +109,8 @@ function getTodoList(weekToday) {
   const savedTodo = localStorage.getItem('todos');
   const parsedToDo = JSON.parse(savedTodo);
   const selectedDayTodo = [];
-
+  
+  console.log(parsedToDo);
   for (let todo of parsedToDo) {
     if (searchTodo(todo, weekToday) !== null)
       selectedDayTodo.push(todo);
@@ -121,10 +119,12 @@ function getTodoList(weekToday) {
   let todoListHtml = '';
   let index = 0;
   for(let todo of selectedDayTodo) {
+    console.log(todo);
     todoListHtml += paintTodo(todo, todoListHtml,index);
     index++;
   }
   return todoListHtml;
+
 }
 
 
@@ -145,6 +145,8 @@ function searchTodo(todo, weekToday) {
   let todoListDay = weekDays[weekToday.getDay()];
 
   let todoListFullDate = `${todoListYear}년 ${todoListMonth}월 ${todoListDate}일 ${todoListDay}`;
+
+
   if (todoDay === todoListFullDate) {
     return todo;
   } else 
@@ -159,7 +161,6 @@ function paintTodo(todo, todoListHtml) {
   todoListHtml += `<label class='todoLabel' for = '${todo.title}'>${todo.title}</label>`;
   todoListHtml += `</li>`;
 
-  console.log(todoListHtml);
   return todoListHtml;
 }
 
