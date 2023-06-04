@@ -36,12 +36,17 @@ function loadWeeklyCalendar(date) {
     calendarHtml += `<div class='weeklyDay'>`;
     calendarHtml += `<div class='weekDate'>${weekDay}</div>`;
     calendarHtml += `<div class='todayList'>`;
-    calendarHtml += getTodoList(weekToday);
+    // calendarHtml += getTodoList(weekToday);
     calendarHtml += `</div>`;
     calendarHtml += '</div>';
   }
 
   weeklyCalendar.innerHTML = calendarHtml;
+
+  for (var i = 0; i < 7; i++) {
+    let weekToday = weekArr[i];
+		getTodoList(weekToday, i);
+  }
 
   let dayDivs = weeklyCalendar.getElementsByClassName('weeklyDay');
   for (let i = 0; i < dayDivs.length; i++) {
@@ -105,28 +110,27 @@ function clickPrevWeek() {
 // nextWeek.addEventListener('click', clickNextWeek);
 // prevWeek.addEventListener('click', clickPrevWeek);
 
-function getTodoList(weekToday) {
+function getTodoList(weekToday, index) {
   const savedTodo = localStorage.getItem('todos');
   const parsedToDo = JSON.parse(savedTodo);
   const selectedDayTodo = [];
-  
   console.log(parsedToDo);
-  for (let todo of parsedToDo) {
-    if (searchTodo(todo, weekToday) !== null)
+  if(parsedToDo != null){
+    for (let todo of parsedToDo) {
+      if (searchTodo(todo, weekToday) !== null)
       selectedDayTodo.push(todo);
+    }
   }
 
-  let todoListHtml = '';
-  let index = 0;
+  const weekDiv = document.getElementsByClassName('todayList');
+  while (weekDiv[index].firstChild) {
+    weekDiv[index].removeChild(weekDiv[index].firstChild);
+  }
+
   for(let todo of selectedDayTodo) {
-    console.log(todo);
-    todoListHtml += paintTodo(todo, todoListHtml,index);
-    index++;
+    paintTodo(todo, weekDiv[index]);
   }
-  return todoListHtml;
-
 }
-
 
 function searchTodo(todo, weekToday) {
   const todoDay = todo.date;
@@ -139,6 +143,7 @@ function searchTodo(todo, weekToday) {
     '금요일',
     '토요일',
   ];
+
   let todoListYear = weekToday.getFullYear();
   let todoListMonth = weekToday.getMonth() + 1;
   let todoListDate = weekToday.getDate();
@@ -153,15 +158,45 @@ function searchTodo(todo, weekToday) {
     return null;
 }
 
-function paintTodo(todo, todoListHtml) {
-  todoListHtml += `<li>`;
-  todoListHtml += `<input class='todoText' type ='radio' 
-                  value='${todo.title}' checked='${todo.check}' selected = '${todo.selected}'
-                  />`;
-  todoListHtml += `<label class='todoLabel' for = '${todo.title}'>${todo.title}</label>`;
-  todoListHtml += `</li>`;
+function paintTodo(todo, weekDiv) {
+  const li = document.createElement('li');
+  const text = document.createElement('input');
+  text.value = todo.title;
+  text.type = 'checkbox';
+  text.checked = todo.check;
+  text.selected = todo.selected;
+  text.disabled = true;
+  const label = document.createElement('label');
+  label.innerText = todo.title;
+  label.for = todo.title;
+  text.value = todo.title;
+  li.appendChild(text);
+  li.appendChild(label);
+  weekDiv.appendChild(li);
+  
+  // todoListHtml += `<li>`;
+  // todoListHtml += `<input class='todoText' type ='checkbox' 
+  //                 value='${todo.title}' checked='${todo.check}' selected = '${todo.selected}'
+  //                 />`;
+  // todoListHtml += `<label class='todoLabel' for = '${todo.title}'>${todo.title}</label>`;
+  // todoListHtml += `</li>`;
 
-  return todoListHtml;
+  // return todoListHtml;
 }
 
+function updateWeekTodo() {
+  const fullDate = todoFullDate.innerText;
+  var dateRegex = /(\d+)년 (\d+)월 (\d+)일 (\S+)요일/;
+  var match = fullDate.match(dateRegex);
+
+  let year = match[1];
+  let month = match[2];
+  let date = match[3];
+  let day = match[4];
+
+  var daysOfWeek = ['일', '월', '화', '수', '목', '금', '토'];
+  var dayOfWeek = daysOfWeek.indexOf(day);
+  let updateDate = new Date(year, month-1, date, dayOfWeek);
+  getTodoList(updateDate, dayOfWeek);
+}
 // window.onload = loadWeeklyCalendar(currentDate);
