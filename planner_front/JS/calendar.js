@@ -71,9 +71,30 @@ function loadCalendar(date) {
   }월`;
 }
 
-// window.onload = function () {
-  // 
-// };
+function firstLoadSetting(){
+  const dayDivs = document.getElementsByClassName('day');
+
+  for (let i = 0; i < dayDivs.length; i++) {
+    const dayDiv = dayDivs[i];
+    selectedDay = dayDiv;
+    savedTodos = localStorage.getItem(TODOS);
+    if (savedTodos != null) {
+      let count = 0;
+      const parsedToDos = JSON.parse(savedTodos);
+      for (let todo of parsedToDos) {
+        const day = todo.date.split(' ')[2];
+        const dayNumber = parseInt(day);
+        if(dayDiv.innerText == dayNumber){
+          count++;
+        }
+      }
+      if(count != 0){
+        selectedDay.innerHTML = `${dayDiv.innerText}<br/>할일: ${count}`;
+      }
+      count = 0;
+    }
+  }
+}
 
 function onloadMonthly(){
   loadCalendar(currentDate);
