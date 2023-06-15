@@ -253,7 +253,7 @@ main{
 .closeTextArea{
     position: relative;
     left: 30px;
-    bottom: 35px;
+    bottom: 10px;
     width: 394px;
     height: 54px;
     margin: 0 auto;
@@ -266,9 +266,9 @@ main{
 
 #textArea{
     position: relative;
-    bottom: 30px;
+    bottom: 10px;
     width: 394px;
-    height: 380px;
+    height: 371px;
     margin: 0 auto;
 
     background: #B0995D;
@@ -412,6 +412,8 @@ form input{
     background: transparent;
     font-size: 23px;
     font-family: SUIT-Regular;
+    resize: none;
+    outline: none;
 }
 
 #saveDiaryBtn{
@@ -420,4 +422,28 @@ form input{
     position: relative;
     left: 400px;
     bottom: 20px;
+}
+
+.weeklyCalendar {
+    display: flex;
+    flex-wrap: wrap;
+    width: 99%;
+}
+
+.weeklyWrapper {
+    width: 1272px;
+}
+
+.weeklyDay {
+    margin: 5px;
+    text-align: center;
+    box-sizing: border-box;
+    cursor: pointer;
+
+    width: 169.75px;
+    height: 630px;
+
+
+    background: #FFFEDF;
+    border-radius: 20px;
 }
