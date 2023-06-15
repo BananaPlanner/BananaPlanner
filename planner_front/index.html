@@ -32,12 +32,15 @@
         <div class="mainBox">
             <input type="button" value="WEEKLY" id="calendarBtn" onclick="changeCalendarView()"></input>
             <div class="calendar-wrapper">
-                <div id="calendar" class="calendar"></div>
+                <div id="monthlyDiv" class="monthly">
+                    <div id="calendar" class="calendar"></div>
+                </div>
+                <div id="weeklyDiv" class="weekly hidden">
+                    <div id="weeklyCalendar" class="weeklyCalendar"></div>
+                </div>
             </div>
         </div>
-
         <div class="rightBox" id="todoListDiv">
-
             <input type="button" value="TODOLIST" id="changeBtn" onclick="changeView()"></input>
             <div id="displayBox" class="display-box">
                 <h1 id="todoList-date"></h1>
@@ -76,5 +79,6 @@
     <script src="JS/calendar.js"></script>
     <script src="JS/index.js"></script>
     <script src="JS/login.js"></script>
+    <script src="Js/weekly.js"></script>
 </body>
 </html>

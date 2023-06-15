@@ -1,22 +1,29 @@
-// function saveDiary() {
-//   const textarea = document.getElementById('textForm')
-//   const content = textarea.value;
-//   console.log(content);
-//   alert("저장되었습니다. "+content)
-// }
-
 var monthlyMode = true;
+
+window.onload = function() {
+  onloadMonthly();
+  firstLoadSetting();
+}
 
 function changeCalendarView() {
   const calendarBtn = document.getElementById('calendarBtn');
+  const monthly = document.getElementById('monthlyDiv');
+  const weekly = document.getElementById('weeklyDiv');
 
   if (monthlyMode) {
     calendarBtn.value = 'MONTHLY';
+    weekly.classList.remove('hidden');
+    monthly.classList.add('hidden');
     monthlyMode = false;
+    loadWeeklyCalendar(currentDate);
   } else {
     calendarBtn.value = 'WEEKLY';
+    monthly.classList.remove('hidden');
+    weekly.classList.add('hidden');
     monthlyMode = true;
+    onloadMonthly();
   }
+  firstLoadSetting();
 }
 
 let todoListMode = true;
@@ -37,5 +44,24 @@ function changeView() {
     todoList.classList.remove('hidden');
     todoListMode = true;
   }
-  console.log('changeView');
 }
+const nextWeek = document.getElementById('nextButton');
+const prevWeek = document.getElementById('prevButton');
+
+nextWeek.addEventListener('click', function(){
+  if(monthlyMode){
+    clickNextMonth();
+  } else{
+    clickNextWeek();
+  }
+  firstLoadSetting();
+});
+
+prevWeek.addEventListener('click', function(){
+  if(monthlyMode){
+    clickPrevMonth();
+  } else{
+    clickPrevWeek();
+  }
+  firstLoadSetting();
+});
