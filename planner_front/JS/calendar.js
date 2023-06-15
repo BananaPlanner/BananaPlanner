@@ -43,7 +43,6 @@ function loadCalendar(date) {
       selectedDay = e.target;
       selectedDay.style.backgroundColor = 'yellow';
       let week = [
-        
         '일요일',
         '월요일',
         '화요일',
@@ -99,7 +98,6 @@ function firstLoadSetting(){
 function onloadMonthly(){
   loadCalendar(currentDate);
 
-
   let dayDivs = document.getElementsByClassName('day');
   for (let i = 0; i < dayDivs.length; i++) {
     dayDivs[i].addEventListener('click', function (e) {
@@ -138,4 +136,3 @@ function clickPrevMonth(){
 //   currentDate.setMonth(currentDate.getMonth() - 1);
 //   loadCalendar(currentDate);
 // });
-
