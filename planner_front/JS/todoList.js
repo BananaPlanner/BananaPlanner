@@ -1,3 +1,6 @@
+
+// todolist-end2
+
 const todoFullDate = document.querySelector('#todoList-date');
 const diaryDate = document.querySelector('#diary-date');
 const today = new Date();
@@ -80,16 +83,6 @@ function setVisibleFalse() {
 
 
 function updateTodoCount(dateString) {
-  let dayText = selectedDay.innerText.split('\n')[0];
-  if (todos[dateString] && todos[dateString].length > 0) {
-      let todoCount = todos[dateString].length;
-      selectedDay.innerHTML = `${dayText}<br/>할일: ${todoCount}`;
-  } else {
-      selectedDay.innerHTML = dayText;
-  }
-  if((selectedDay.innerHTML).match(/할일: (\d+)/)[1]){
-    selectedDay.innerHTML = `${dayText}<br/>할일:`;
-  }
 }
 
 
@@ -100,16 +93,17 @@ function loadTodos(dateString){
 
 function updateTodoCount(){
   let test = 0;
-  const listLabel = document.querySelectorAll('li label');
+  const listLabel = document.querySelectorAll('ul li label');
   for (let i = 0; i < listLabel.length; i++) {
+    console.log(listLabel[i]);
     test++;
   }
   let dayText = selectedDay.innerText.split('\n')[0];
-  if (todos.length > 0) {
-    let todoCount = todos.length;
-    selectedDay.innerHTML = `${dayText}<br/>할일: ${test}`;
+
+  if(listLabel.length != 0){
+    selectedDay.innerHTML = `${dayText}<br/>할일: ${listLabel.length}`;
   } else {
-      selectedDay.innerHTML = dayText;
+    selectedDay.innerHTML = dayText;
   }
 }
 
@@ -152,6 +146,7 @@ function addTodo(event) {
   todoTitle.value = '';
   todoContent.value = '';
   setVisibleFalse();
+  updateWeekTodo();
   updateTodoCount();
 }
 
@@ -267,6 +262,7 @@ function deleteTodo(event) {
     i.id = '';
   }
   setVisibleFalse();
+  updateWeekTodo();
   updateTodoCount();
 }
 

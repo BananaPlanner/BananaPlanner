@@ -43,24 +43,29 @@ function loadCalendar(date) {
       selectedDay = e.target;
       selectedDay.style.backgroundColor = 'yellow';
       let week = [
-        '목요일',
-        '금요일',
-        '토요일',
+        
         '일요일',
         '월요일',
         '화요일',
         '수요일',
+        '목요일',
+        '금요일',
+        '토요일',
+
       ];
-      let day = week[new Date(year, month + 1, e.target.innerText).getDay()];
+      const k = e.target.innerText.split('\n');
+
+      let day = week[new Date(year, month, k[0]).getDay()];
       document.querySelector('#todoList-date').innerText = `${year}년 ${
         month + 1
-      }월 ${e.target.innerText}일 ${day}`;
+      }월 ${k[0]}일 ${day}`;
       document.querySelector('#diary-date').innerText = `${year}년 ${
         month + 1
-      }월 ${e.target.innerText}일 ${day}`;
+      }월 ${k[0]}일 ${day}`;
       /*       displayBox.innerText = `${year}-${month + 1}-${e.target.innerText}`; */
     });
   }
+
   document.getElementById('monthYearDisplay').innerText = `${year}년 ${
     month + 1
   }월`;
@@ -73,6 +78,7 @@ function loadCalendar(date) {
 function onloadMonthly(){
   loadCalendar(currentDate);
 
+
   let dayDivs = document.getElementsByClassName('day');
   for (let i = 0; i < dayDivs.length; i++) {
     dayDivs[i].addEventListener('click', function (e) {
@@ -82,14 +88,16 @@ function onloadMonthly(){
       selectedDay = e.target;
       selectedDay.style.backgroundColor = 'yellow';
 
-      let dateString = `${currentDate.getFullYear()}-${
-        currentDate.getMonth() + 1
-      }-${e.target.innerText.split('\n')[0]}`;
-      loadTodos(dateString);
+      let dateString = new Date(currentDate.getFullYear(), currentDate.getMonth(), e.target.innerText.split('\n')[0]);
 
-      /*       document.getElementById('displayBox').innerText = dateString; */
+      // let dateString = `${currentDate.getFullYear()}년 ${
+      //   currentDate.getMonth() + 1
+      // }월 ${e.target.innerText.split('\n')[0]}일`;
+      loadTodos(dateString);
+      updateTodoCount(dateString);
     });
   }
+
 }
 
 function clickNextMonth(){
@@ -109,3 +117,4 @@ function clickPrevMonth(){
 //   currentDate.setMonth(currentDate.getMonth() - 1);
 //   loadCalendar(currentDate);
 // });
+
