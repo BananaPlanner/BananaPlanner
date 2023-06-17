@@ -15,7 +15,8 @@ function saveDiary() {
     });
   }
   localStorage.setItem('diaryList', JSON.stringify(diaryList));
-  console.log('저장되었습니다.');
+
+  setBananaIcon(date);
 }
 saveDiaryBtn.addEventListener('click', saveDiary);
 

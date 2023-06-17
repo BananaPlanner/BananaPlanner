@@ -2,7 +2,8 @@ var monthlyMode = true;
 
 window.onload = function() {
   onloadMonthly();
-  firstLoadSetting();
+  firstLoadSettingTodo();
+  firstLoadSettingDiary()
 }
 
 function changeCalendarView() {
