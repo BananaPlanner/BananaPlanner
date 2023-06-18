@@ -2,7 +2,8 @@ var monthlyMode = true;
 
 window.onload = function() {
   onloadMonthly();
-  firstLoadSetting();
+  firstLoadSettingTodo();
+  firstLoadSettingDiary()
 }
 
 function changeCalendarView() {
@@ -23,7 +24,8 @@ function changeCalendarView() {
     monthlyMode = true;
     onloadMonthly();
   }
-  firstLoadSetting();
+  firstLoadSettingTodo();
+  firstLoadSettingDiary()
 }
 
 let todoListMode = true;
@@ -54,7 +56,8 @@ nextWeek.addEventListener('click', function(){
   } else{
     clickNextWeek();
   }
-  firstLoadSetting();
+  firstLoadSettingTodo();
+  firstLoadSettingDiary()
 });
 
 prevWeek.addEventListener('click', function(){
@@ -63,5 +66,6 @@ prevWeek.addEventListener('click', function(){
   } else{
     clickPrevWeek();
   }
-  firstLoadSetting();
+  firstLoadSettingTodo();
+  firstLoadSettingDiary()
 });
