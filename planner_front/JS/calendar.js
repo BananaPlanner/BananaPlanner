@@ -43,7 +43,6 @@ function loadCalendar(date) {
       selectedDay = e.target;
       selectedDay.style.backgroundColor = 'yellow';
       let week = [
-        
         '일요일',
         '월요일',
         '화요일',
@@ -274,7 +273,6 @@ function setBananaIcon2(dateString, selectedDay){ // 일기가 채워져있다�
 
 function onloadMonthly(){
   loadCalendar(currentDate);
-
 
   let dayDivs = document.getElementsByClassName('day');
   for (let i = 0; i < dayDivs.length; i++) {

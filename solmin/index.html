@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="CSS/style.css">
+</head>
+
+<body>
+    <div id="todoList-div">
+        <h1 id="todoList-date"></h1>
+        <ul id="todoList"></ul>
+        <button type="button" class="addTodoListBtn">+</button>
+        <div id="textArea" class="hidden">
+            <div id="todoTitle">
+                <form>
+                    <input id="todoTitle_input" type="text">
+                    <button id="saveTodoBtn"></button>
+                </form>
+            </div>
+            <div id="todoContent">
+                <form>
+                    <input id="todoContent_input" type="text">
+                    <button id="deleteTodoBtn"><img src="img/trashcan.png" alt="trashcan"></button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script src="JS/todoList.js"></script>
+</body>
+
+</html>
