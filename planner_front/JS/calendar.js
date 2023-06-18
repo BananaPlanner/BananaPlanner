@@ -62,7 +62,6 @@ function loadCalendar(date) {
       document.querySelector('#diary-date').innerText = `${year}년 ${
         month + 1
       }월 ${k[0]}일 ${day}`;
-      /*       displayBox.innerText = `${year}-${month + 1}-${e.target.innerText}`; */
     });
   }
 
@@ -104,6 +103,7 @@ function firstLoadSettingTodo(){
     }
   }
 }
+
 function firstLoadSettingDiary() {
   const changeBtn = document.getElementById('changeBtn');
   const todoList = document.getElementById('todoListDiv');
@@ -203,8 +203,6 @@ function setBananaIcon(date){
   const changeBtn = document.getElementById('changeBtn');
   const todoList = document.getElementById('todoListDiv');
   const diary = document.getElementById('diaryDiv');
-
-  alert(date)
   
   for (let i = 0; i < dayDivs.length; i++) {
     const dayDiv = dayDivs[i];
@@ -229,7 +227,7 @@ function setBananaIcon(date){
     }
   }
 }
-function setBananaIcon2(dateString, selectedDay){ // 첫 로딩때 일기가 채워져있다면 아이콘 추가해주기
+function setBananaIcon2(dateString, selectedDay){ // 일기가 채워져있다면 아이콘 추가해주기
 
   const changeBtn = document.getElementById('changeBtn');
   const todoList = document.getElementById('todoListDiv');
@@ -274,7 +272,6 @@ function setBananaIcon2(dateString, selectedDay){ // 첫 로딩때 일기가 채
 }
 }
 
-
 function onloadMonthly(){
   loadCalendar(currentDate);
 
@@ -288,15 +285,8 @@ function onloadMonthly(){
       selectedDay = e.target;
       selectedDay.style.backgroundColor = 'yellow';
 
-      // const bananaImage = document.createElement('img');
-      // bananaImage.src = './img/banana.png';
-      // bananaImage.width = 50;
-      // selectedDay.appendChild(bananaImage);
-
       let dateString = new Date(currentDate.getFullYear(), currentDate.getMonth(), e.target.innerText.split('\n')[0]);
 
-      //loadTodos(dateString);
-      //updateTodoCount(dateString);
       setBananaIcon2(dateString, selectedDay);
       
     });
@@ -315,12 +305,10 @@ calendar.addEventListener('dblclick', function (e) {
   }
 });
 
-
 function clickNextMonth(){
   currentDate.setMonth(currentDate.getMonth() + 1);
   loadCalendar(currentDate);
 }
-
 
 function clickPrevMonth(){
   currentDate.setMonth(currentDate.getMonth() - 1);
