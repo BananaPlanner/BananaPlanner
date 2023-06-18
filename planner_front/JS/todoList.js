@@ -1,6 +1,4 @@
-
-// todolist-end2
-
+/* 1~17번째 줄까지는 당일의 날짜를 구하는 코드 */
 const todoFullDate = document.querySelector('#todoList-date');
 const diaryDate = document.querySelector('#diary-date');
 const today = new Date();
@@ -17,6 +15,7 @@ const WEEK = [
   '토요일',
 ];
 const todoDay = WEEK[today.getDay()];
+/* htmlm에 요소 가져오기 (투두리스트, textBox여는 버튼, textBox, textBox안 제목 입력칸, textBox안 내용 입력칸, 투두 저장버튼, 투두 삭제 버튼) */
 const todoList = document.querySelector('#todoList');
 const addTodoBtn = document.querySelector('.addTodoListBtn');
 const textArea = document.querySelector('#textArea');
@@ -25,17 +24,23 @@ const saveTodoBtn = document.querySelector('#saveTodoBtn');
 const todoContent = document.querySelector('#todoContent_input');
 const deleteTodoBtn = document.querySelector('#deleteTodoBtn');
 
+/* localStorage에 저장되는 todo 배열 */
 let todos = [];
+/* 투두 수정할 때 사용하는 선택된 index값, 지금은 선택된 것이 없으니 -1 */
 let selectedTodoIndex = -1;
-// 제목과 내용, 체크여부
 const TODOS = 'todos';
 
+/* 투두리스트, 일기의 날짜 초기에 당일로 설정 */
 todoFullDate.innerText = `${todoYear}년 ${todoMonth}월 ${todoDate}일 ${todoDay}`;
 diaryDate.innerText = `${todoYear}년 ${todoMonth}월 ${todoDate}일 ${todoDay}`;
 
+/* 투두리스트에 +버튼 누를 시 textBox가 나오게 하는 함수 */
 function setVisible() {
+  /* +버튼이 열려있는지 닫혀있는지 여부는 class에 addTodoListBtn이 있는지 closeTodoListBtn이 있는지 구별을 통해 */
   if (addTodoBtn.classList.contains('addTodoListBtn')) {
+    /* +버튼이 닫혀있는 경우 textBox의 class에서 hidden을 제거 */
     textArea.classList.remove('hidden');
+    /* +버튼의 class add에서 close로 교체*/
     addTodoBtn.classList.remove('addTodoListBtn');
     addTodoBtn.classList.add('closeTextArea');
     addTodoBtn.innerText = 'X';
@@ -43,6 +48,7 @@ function setVisible() {
     todoTitle.value = '';
     todoContent.value = '';
   } else if (addTodoBtn.classList.contains('closeTextArea')) {
+    /* +버튼이 열려있는 경우 textBox의 class에 hidden 추가 */
     document.querySelectorAll('#todoList li label').id = '';
     textArea.classList.add('hidden');
     addTodoBtn.classList.remove('closeTextArea');
@@ -51,6 +57,7 @@ function setVisible() {
     todoList.id = 'todoList';
     todoTitle.value = '';
     todoContent.value = '';
+    /* textBox가 닫히는 경우 만약 투두리스트에 선택된 투두가 있다면 해당 투두의 상태를 다시 선택되지 않음으로 돌려줌 */
     const allList = document.querySelectorAll(' li label');
     for (let list of allList) {
       list.id = '';
@@ -58,8 +65,9 @@ function setVisible() {
     selectedTodoIndex = -1;
   }
 }
-
+/* textBox의 열림을 강제하는 함수 */
 function setVisibleTrue() {
+  /* textBox가 닫힘 상태라면 */
   if (addTodoBtn.classList.contains('addTodoListBtn')) {
     textArea.classList.remove('hidden');
     addTodoBtn.classList.remove('addTodoListBtn');
@@ -69,9 +77,10 @@ function setVisibleTrue() {
   }
 }
 
+/* textBox의 닫힘을 강제하는 함수 */
 function setVisibleFalse() {
+  /* textBox가 열림 상태라면 */
   if (addTodoBtn.classList.contains('closeTextArea')) {
-    document.querySelectorAll('li label').id = '';
     textArea.classList.add('hidden');
     addTodoBtn.classList.remove('closeTextArea');
     addTodoBtn.classList.add('addTodoListBtn');
@@ -80,7 +89,6 @@ function setVisibleFalse() {
     selectedTodoIndex = -1;
   }
 }
-
 
 function updateTodoCount(dateString) {
 }
@@ -116,7 +124,7 @@ function addTodo(event) {
     if (listLabel[i].id === 'selectedLabel') {
       selectedTodoIndex = i;
     }
-  }
+
   if (selectedTodoIndex != -1) {
     todos[selectedTodoIndex].title = title_;
     todos[selectedTodoIndex].content = content_;
@@ -208,7 +216,6 @@ function setViewTodo(event) {
     }
   }
 }
-
 function searchTodoTitle(label) {
   for (let todo of todos) {
     if (todo.title === label.innerText) {
@@ -299,7 +306,6 @@ observerTodo.observe(todoFullDate, {
 deleteTodoBtn.addEventListener('click', deleteTodo);
 addTodoBtn.addEventListener('click', setVisible);
 saveTodoBtn.addEventListener('click', addTodo);
-
 let savedTodos = localStorage.getItem(TODOS);
 
 if (savedTodos != null) {
