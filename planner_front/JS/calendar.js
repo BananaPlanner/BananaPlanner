@@ -43,7 +43,6 @@ function loadCalendar(date) {
       selectedDay = e.target;
       selectedDay.style.backgroundColor = 'yellow';
       let week = [
-        
         '일요일',
         '월요일',
         '화요일',
@@ -51,7 +50,6 @@ function loadCalendar(date) {
         '목요일',
         '금요일',
         '토요일',
-
       ];
       const k = e.target.innerText.split('\n');
 
@@ -286,7 +284,6 @@ function onloadMonthly(){
       selectedDay.style.backgroundColor = 'yellow';
 
       let dateString = new Date(currentDate.getFullYear(), currentDate.getMonth(), e.target.innerText.split('\n')[0]);
-
       setBananaIcon2(dateString, selectedDay);
       
     });
@@ -310,8 +307,8 @@ function clickNextMonth(){
   loadCalendar(currentDate);
 }
 
+
 function clickPrevMonth(){
   currentDate.setMonth(currentDate.getMonth() - 1);
   loadCalendar(currentDate);
 }
-

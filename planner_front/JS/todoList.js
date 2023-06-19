@@ -80,6 +80,7 @@ function setVisibleFalse() {
   }
 }
 
+
 function updateTodoCount(dateString) {}
 
 let isDateString = '';
@@ -90,13 +91,16 @@ function loadTodos(dateString) {
 function updateTodoCount() {
   let test = 0;
   const listLabel = document.querySelectorAll('ul li label');
+
   for (let i = 0; i < listLabel.length; i++) {
     console.log(listLabel[i]);
     test++;
   }
   let dayText = selectedDay.innerText.split('\n')[0];
 
+
   if (listLabel.length != 0) {
+
     selectedDay.innerHTML = `${dayText}<br/>할일: ${listLabel.length}`;
   } else {
     selectedDay.innerHTML = dayText;
@@ -113,6 +117,7 @@ function addTodo(event) {
       selectedTodoIndex = i;
     }
   }
+
   if (selectedTodoIndex != -1) {
     todos[selectedTodoIndex].title = title_;
     todos[selectedTodoIndex].content = content_;
@@ -122,6 +127,7 @@ function addTodo(event) {
       }
       i.id = '';
     }
+
     /* API연결 필요 */
     /* 선택된 todo의 내용을 수정하고 다시 local에 저장 */
     localStorage.setItem(TODOS, JSON.stringify(todos));
@@ -211,7 +217,6 @@ function setViewTodo(event) {
     }
   }
 }
-
 function searchTodoTitle(label) {
   for (let todo of todos) {
     if (todo.title === label.innerText) {

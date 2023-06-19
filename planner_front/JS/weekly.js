@@ -47,7 +47,6 @@ function loadWeeklyCalendar(date) {
     let weekToday = weekArr[i];
 		getTodoList(weekToday, i);
   }
-
   let dayDivs = weeklyCalendar.getElementsByClassName('weeklyDay');
   for (let i = 0; i < dayDivs.length; i++) {
     dayDivs[i].addEventListener('click',  function(event){
@@ -144,7 +143,6 @@ function searchTodo(todo, weekToday) {
     '금요일',
     '토요일',
   ];
-
   let todoListYear = weekToday.getFullYear();
   let todoListMonth = weekToday.getMonth() + 1;
   let todoListDate = weekToday.getDate();
@@ -158,7 +156,6 @@ function searchTodo(todo, weekToday) {
   } else 
     return null;
 }
-
 function paintTodo(todo, weekDiv) {
   const li = document.createElement('li');
   const text = document.createElement('input');
