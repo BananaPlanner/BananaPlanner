@@ -93,7 +93,7 @@ function loadTodos(dateString){
 
 function updateTodoCount(){
   let test = 0;
-  const listLabel = document.querySelectorAll('li label');
+  const listLabel = document.querySelectorAll('ul li label');
   for (let i = 0; i < listLabel.length; i++) {
     console.log(listLabel[i]);
     test++;
@@ -147,6 +147,7 @@ function addTodo(event) {
   todoContent.value = '';
   setVisibleFalse();
   updateTodoCount();
+  updateWeekTodo();
   todoSettingDiary();
 }
 
@@ -271,6 +272,7 @@ function deleteTodo(event) {
     i.id = '';
   }
   setVisibleFalse();
+  updateWeekTodo();
   updateTodoCount();
 }
 
