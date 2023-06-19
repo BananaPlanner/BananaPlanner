@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BananaPlanner</title>
     <link rel="stylesheet" href="CSS/style.css">
+    <link rel="stylesheet" href="CSS/modalWindow.css">
 </head>
 
 <body>
@@ -24,6 +25,9 @@
         <div id="nav-button-right-z">
             <button id="nextButton" class="nav-button-right">&lt;</button>
         </div>
+        <div id="weather_div">
+            <h3 id="weather"></h3>
+        </div>
         <div class="tail">
             <img class="tailImg" src="img/Group 10.svg" style="width: 80%;">
         </div>
@@ -32,6 +36,7 @@
         <div class="mainBox">
             <input type="button" value="WEEKLY" id="calendarBtn" onclick="changeCalendarView()"></input>
             <div class="calendar-wrapper">
+
                 <div id="monthlyDiv" class="monthly">
                     <div id="calendar" class="calendar"></div>
                 </div>
@@ -66,6 +71,16 @@
             <input type="button" value="DIARY" id="changeBtn" onclick="changeView()"></input>
             <div class="display-box">
                 <h1 id="diary-date"></h1>
+                <div id="diary-emotion">
+                    <select id="mood">
+                        <option value="happy">&#128512;</option>
+                        <option value="sad">&#128557;</option>
+                        <option value="soso">&#128528;</option>
+                        <option value="angry">&#128544;</option>
+                        <option value="lovely">&#128525;</option>
+                        <option value="sick">&#128567;</option>
+                    </select>
+                </div>
                 <div id="diaryText">
                     <textarea id="diaryTextForm" rows="13" maxlength="200"></textarea>
                     <p></p>
@@ -73,12 +88,42 @@
                 </div>
             </div>
         </div>
+        <div id="modal" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <div class="modal-title-text">
+                    <h2 id="modal-date"></h2>
+                    <p id="modal-info-1"></p>
+                </div>
+                <div class="modal-page-title">
+                    <h1>TodoList</h1>
+                    <h1 id="modal-page-title-1">Diary</h1>
+                    <h1 id="modal-page-title-2">achievement</h1>
+                </div>
+                <div id="modal-page">
+                    <div id="modal-page1" class="model-pages">
+
+                    </div>
+                    <div id="modal-page2" class="model-pages">
+
+                    </div>
+                    <div id="modal-page3" class="model-pages">
+
+                    </div>
+                </div>
+            </div>
+        </div>
     </main>
+    <script src="JS/weather.js"></script>
     <script src="JS/todoList.js"></script>
     <script src="JS/diary.js"></script>
     <script src="JS/calendar.js"></script>
     <script src="JS/index.js"></script>
     <script src="JS/login.js"></script>
+
     <script src="Js/weekly.js"></script>
+    <script src="Js/modalWindow.js"></script>
+
 </body>
+
 </html>
