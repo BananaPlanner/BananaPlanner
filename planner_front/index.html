@@ -68,6 +68,16 @@
             <input type="button" value="DIARY" id="changeBtn" onclick="changeView()"></input>
             <div class="display-box">
                 <h1 id="diary-date"></h1>
+                <div id="diary-emotion">
+                    <select id="mood">
+                        <option value="happy">&#128512;</option>
+                        <option value="sad">&#128557;</option>
+                        <option value="soso">&#128528;</option>
+                        <option value="angry">&#128544;</option>
+                        <option value="lovely">&#128525;</option>
+                        <option value="sick">&#128567;</option>
+                    </select>
+                </div>
                 <div id="diaryText">
                     <textarea id="diaryTextForm" rows="13" maxlength="200"></textarea>
                     <p></p>
@@ -106,7 +116,6 @@
     <script src="JS/calendar.js"></script>
     <script src="JS/index.js"></script>
     <script src="JS/login.js"></script>
-
     <script src="Js/weekly.js"></script>
     <script src="Js/modalWindow.js"></script>
 

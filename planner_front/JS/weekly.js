@@ -105,11 +105,6 @@ function clickPrevWeek() {
   loadWeeklyCalendar(currentDate);
 }
 
-// const nextWeek = document.getElementById('nextButton');
-// const prevWeek = document.getElementById('prevButton');
-// nextWeek.addEventListener('click', clickNextWeek);
-// prevWeek.addEventListener('click', clickPrevWeek);
-
 function getTodoList(weekToday, index) {
   const savedTodo = localStorage.getItem('todos');
   const parsedToDo = JSON.parse(savedTodo);
@@ -173,15 +168,6 @@ function paintTodo(todo, weekDiv) {
   li.appendChild(text);
   li.appendChild(label);
   weekDiv.appendChild(li);
-  
-  // todoListHtml += `<li>`;
-  // todoListHtml += `<input class='todoText' type ='checkbox' 
-  //                 value='${todo.title}' checked='${todo.check}' selected = '${todo.selected}'
-  //                 />`;
-  // todoListHtml += `<label class='todoLabel' for = '${todo.title}'>${todo.title}</label>`;
-  // todoListHtml += `</li>`;
-
-  // return todoListHtml;
 }
 
 function updateWeekTodo() {
@@ -199,4 +185,3 @@ function updateWeekTodo() {
   let updateDate = new Date(year, month-1, date, dayOfWeek);
   getTodoList(updateDate, dayOfWeek);
 }
-// window.onload = loadWeeklyCalendar(currentDate);
