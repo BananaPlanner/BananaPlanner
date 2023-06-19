@@ -8,6 +8,8 @@ function tryLogin() {
   console.log(pwText);
 
   if (idText == '' || pwText == '') {
+    const wrongTry = document.getElementById('wrongTry');
+    wrongTry.style.display = '';
     return false;
   }
 
@@ -15,6 +17,9 @@ function tryLogin() {
   if (loginResult) {
     // window.location.href = './index.html';
     window.location.replace('index.html');
+  } else{
+    const wrongTry = document.getElementById('wrongTry');
+    wrongTry.style.display = '';
   }
 }
 

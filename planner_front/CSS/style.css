@@ -87,7 +87,7 @@ main{
   
     font-size: 2em;
     width: 450px;
-    height: 775px;
+    height: 820px;
 
     background: #FEF38D;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
@@ -446,6 +446,16 @@ form input{
 
     background: #FFFEDF;
     border-radius: 20px;
+}
+
+#mood{
+    width: 15%;
+    font-size: 25px;
+    border: none;
+    background-color: #FEF38D;
+    outline: none;
+    float: right;
+    margin: 0 20px 20px 0;
 }
 
 /*             */
