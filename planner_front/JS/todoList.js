@@ -1,4 +1,3 @@
-
 // todolist-end2
 
 const todoFullDate = document.querySelector('#todoList-date');
@@ -81,17 +80,14 @@ function setVisibleFalse() {
   }
 }
 
+function updateTodoCount(dateString) {}
 
-function updateTodoCount(dateString) {
-}
-
-
-let isDateString = "";
-function loadTodos(dateString){
+let isDateString = '';
+function loadTodos(dateString) {
   isDateString = dateString;
 }
 
-function updateTodoCount(){
+function updateTodoCount() {
   let test = 0;
   const listLabel = document.querySelectorAll('ul li label');
   for (let i = 0; i < listLabel.length; i++) {
@@ -100,7 +96,7 @@ function updateTodoCount(){
   }
   let dayText = selectedDay.innerText.split('\n')[0];
 
-  if(listLabel.length != 0){
+  if (listLabel.length != 0) {
     selectedDay.innerHTML = `${dayText}<br/>할일: ${listLabel.length}`;
   } else {
     selectedDay.innerHTML = dayText;
@@ -126,6 +122,8 @@ function addTodo(event) {
       }
       i.id = '';
     }
+    /* API연결 필요 */
+    /* 선택된 todo의 내용을 수정하고 다시 local에 저장 */
     localStorage.setItem(TODOS, JSON.stringify(todos));
   } else {
     const input = {
@@ -137,6 +135,8 @@ function addTodo(event) {
     };
     if (title_ != '' || content_ != '') {
       todos.push(input);
+      /* API연결 필요 */
+      /* 새로운 todo를 추가 */
       localStorage.setItem(TODOS, JSON.stringify(todos));
       paint(input);
     } else {
@@ -173,6 +173,8 @@ function setCheck(event) {
   const todo = searchTodoTitleValue(event.target.value);
   if (todo != null) {
     todo.check = event.target.checked;
+    /* API연결 필요 */
+    /* todo의 check여부에 변화가 생겼을 시 이를 local에 저장 */
     localStorage.setItem(TODOS, JSON.stringify(todos));
   } else {
     console.log('not found');
@@ -231,15 +233,15 @@ function searchTodoTitleValue(label) {
 
 function searchTodoByDay(todo) {
   const todoDay = todo.date;
-  let year1 = parseInt(todoDay.split(' ')[0])
-  let month1 = parseInt(todoDay.split(' ')[1])
-  let day1 = parseInt(todoDay.split(' ')[2])
-  let todoDayDate = `${year1}${month1}${day1}`
+  let year1 = parseInt(todoDay.split(' ')[0]);
+  let month1 = parseInt(todoDay.split(' ')[1]);
+  let day1 = parseInt(todoDay.split(' ')[2]);
+  let todoDayDate = `${year1}${month1}${day1}`;
 
-  let year2 = parseInt(todoFullDate.innerHTML.split(' ')[0])
-  let month2 = parseInt(todoFullDate.innerHTML.split(' ')[1])
-  let day2 = parseInt(todoFullDate.innerHTML.split(' ')[2])
-  let todoFullDayDate = `${year2}${month2}${day2}`
+  let year2 = parseInt(todoFullDate.innerHTML.split(' ')[0]);
+  let month2 = parseInt(todoFullDate.innerHTML.split(' ')[1]);
+  let day2 = parseInt(todoFullDate.innerHTML.split(' ')[2]);
+  let todoFullDayDate = `${year2}${month2}${day2}`;
   if (todoDayDate === todoFullDayDate) {
     return todo;
   } else return null;
@@ -259,8 +261,9 @@ function deleteTodo(event) {
   event.preventDefault();
   const deleteTodoTitle = todoTitle.value;
   const deleteTodoIndex = searchTodoIndex(deleteTodoTitle);
-  //console.log(deleteTodoIndex);
   todos.splice(deleteTodoIndex, 1);
+  /* API연결 필요 */
+  /* 해당 todo를 지우고 local에 저장된 todos를 해당 todo를 지운 배열로 다시 설정 */
   localStorage.setItem(TODOS, JSON.stringify(todos));
   const listLabel = document.querySelectorAll('li label');
   const list = document.querySelectorAll('li');
@@ -302,6 +305,8 @@ deleteTodoBtn.addEventListener('click', deleteTodo);
 addTodoBtn.addEventListener('click', setVisible);
 saveTodoBtn.addEventListener('click', addTodo);
 
+/* API연결 필요 */
+/* 처음 화면이 로딩될 때 해당 user의 정보를 local에 저장한 후 다음 코드가 실행되게 해야함 */
 let savedTodos = localStorage.getItem(TODOS);
 
 if (savedTodos != null) {
