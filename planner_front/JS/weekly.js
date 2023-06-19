@@ -36,7 +36,6 @@ function loadWeeklyCalendar(date) {
     calendarHtml += `<div class='weeklyDay'>`;
     calendarHtml += `<div class='weekDate'>${weekDay}</div>`;
     calendarHtml += `<div class='todayList'>`;
-    // calendarHtml += getTodoList(weekToday);
     calendarHtml += `</div>`;
     calendarHtml += '</div>';
   }
@@ -171,6 +170,11 @@ function paintTodo(todo, weekDiv) {
 }
 
 function updateWeekTodo() {
+
+  if(monthlyMode){
+    return;
+  }
+
   const fullDate = todoFullDate.innerText;
   var dateRegex = /(\d+)년 (\d+)월 (\d+)일 (\S+)요일/;
   var match = fullDate.match(dateRegex);

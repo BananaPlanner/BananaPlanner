@@ -148,6 +148,7 @@ function addTodo(event) {
   setVisibleFalse();
   updateWeekTodo();
   updateTodoCount();
+  updateWeekTodo();
   todoSettingDiary();
 }
 

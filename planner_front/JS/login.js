@@ -4,9 +4,6 @@ function tryLogin() {
   const idText = id.value;
   const pwText = pw.value;
 
-  console.log(idText);
-  console.log(pwText);
-
   if (idText == '' || pwText == '') {
     const wrongTry = document.getElementById('wrongTry');
     wrongTry.style.display = '';
