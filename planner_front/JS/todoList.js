@@ -148,6 +148,7 @@ function addTodo(event) {
   setVisibleFalse();
   updateWeekTodo();
   updateTodoCount();
+  todoSettingDiary();
 }
 
 function paint(input) {
@@ -230,7 +231,16 @@ function searchTodoTitleValue(label) {
 
 function searchTodoByDay(todo) {
   const todoDay = todo.date;
-  if (parseInt(todoDay.split(" ")[2]) === parseInt(todoFullDate.innerHTML.split(" ")[2])) {
+  let year1 = parseInt(todoDay.split(' ')[0])
+  let month1 = parseInt(todoDay.split(' ')[1])
+  let day1 = parseInt(todoDay.split(' ')[2])
+  let todoDayDate = `${year1}${month1}${day1}`
+
+  let year2 = parseInt(todoFullDate.innerHTML.split(' ')[0])
+  let month2 = parseInt(todoFullDate.innerHTML.split(' ')[1])
+  let day2 = parseInt(todoFullDate.innerHTML.split(' ')[2])
+  let todoFullDayDate = `${year2}${month2}${day2}`
+  if (todoDayDate === todoFullDayDate) {
     return todo;
   } else return null;
 }

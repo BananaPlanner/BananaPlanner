@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BananaPlanner</title>
     <link rel="stylesheet" href="CSS/style.css">
+    <link rel="stylesheet" href="CSS/modalWindow.css">
 </head>
 
 <body>
@@ -74,6 +75,31 @@
                 </div>
             </div>
         </div>
+        <div id="modal" class="modal">
+            <div class="modal-content">
+              <span class="close">&times;</span>
+              <div class="modal-title-text">
+                <h2 id="modal-date"></h2>
+                <p id="modal-info-1"></p>
+              </div>
+                <div class="modal-page-title">
+                    <h1>TodoList</h1>
+                    <h1 id="modal-page-title-1">Diary</h1>
+                    <h1 id="modal-page-title-2">achievement</h1>
+                </div>
+              <div id="modal-page">
+                <div id="modal-page1" class="model-pages">
+
+                </div>
+                <div id="modal-page2" class="model-pages">
+
+                </div>
+                <div id="modal-page3" class="model-pages">
+
+                </div>
+              </div>
+            </div>
+        </div>
     </main>
     <script src="JS/todoList.js"></script>
     <script src="JS/diary.js"></script>
@@ -82,7 +108,7 @@
     <script src="JS/login.js"></script>
 
     <script src="Js/weekly.js"></script>
+    <script src="Js/modalWindow.js"></script>
 
 </body>
-
 </html>
