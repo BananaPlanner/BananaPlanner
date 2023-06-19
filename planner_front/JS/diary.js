@@ -6,7 +6,7 @@ function saveDiary() {
   const date = document.querySelector('#diary-date').innerText;
   const text = document.querySelector('#diaryTextForm').value;
   const emotion = document.querySelector('#mood').value;
-  
+
   let foundDate = searchDiaryByDate();
   if (foundDate != null) {
     foundDate.diary = text;

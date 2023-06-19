@@ -146,6 +146,7 @@ function addTodo(event) {
   todoTitle.value = '';
   todoContent.value = '';
   setVisibleFalse();
+  updateWeekTodo();
   updateTodoCount();
   updateWeekTodo();
   todoSettingDiary();

@@ -36,7 +36,6 @@ function loadWeeklyCalendar(date) {
     calendarHtml += `<div class='weeklyDay'>`;
     calendarHtml += `<div class='weekDate'>${weekDay}</div>`;
     calendarHtml += `<div class='todayList'>`;
-    //calendarHtml += getTodoList(weekToday);
     calendarHtml += `</div>`;
     calendarHtml += '</div>';
   }
@@ -105,11 +104,6 @@ function clickPrevWeek() {
   loadWeeklyCalendar(currentDate);
 }
 
-// const nextWeek = document.getElementById('nextButton');
-// const prevWeek = document.getElementById('prevButton');
-// nextWeek.addEventListener('click', clickNextWeek);
-// prevWeek.addEventListener('click', clickPrevWeek);
-
 function getTodoList(weekToday, index) {
   const savedTodo = localStorage.getItem('todos');
   const parsedToDo = JSON.parse(savedTodo);
@@ -131,7 +125,6 @@ function getTodoList(weekToday, index) {
     paintTodo(todo, weekDiv[index]);
   }
 }
-
 
 function searchTodo(todo, weekToday) {
   const todoDay = todo.date;
@@ -158,6 +151,7 @@ function searchTodo(todo, weekToday) {
   } else 
     return null;
 }
+
 function paintTodo(todo, weekDiv) {
   const li = document.createElement('li');
   const text = document.createElement('input');
@@ -176,9 +170,11 @@ function paintTodo(todo, weekDiv) {
 }
 
 function updateWeekTodo() {
+
   if(monthlyMode){
     return;
   }
+
   const fullDate = todoFullDate.innerText;
   var dateRegex = /(\d+)년 (\d+)월 (\d+)일 (\S+)요일/;
   var match = fullDate.match(dateRegex);
