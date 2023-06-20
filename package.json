@@ -1,0 +1,16 @@
+{
+  "name": "bananaplaner",
+  "version": "1.0.0",
+  "description": "| 소속 | 학번 | 이름 |\r | --- | --- | --- |\r | 응용소프트웨어전공 | 60221320  | 최은택 |\r | 응용소프트웨어전공 | 60221329  | 김예일 |\r | 응용소프트웨어전공 | 60221333  | 박솔민 |\r | 응용소프트웨어전공 | 60221340  | 장소윤 |\r | 응용소프트웨어전공 | 60221343  | 채서연 |",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2",
+    "mongodb": "^3.6.4",
+    "nodemon": "^2.0.22"
+  }
+}
