@@ -1,0 +1,73 @@
+html{
+    background-color: #FFFACF;
+}
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    
+}
+header{
+    margin-top:5%;
+    
+}
+header, main, footer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+main{
+    width:70%;
+    background-color: #FEF38D;
+    /* border-color: #422E17;
+    border-style:solid;
+    border-width: 10; */
+    margin-top: 0%;
+    border-radius: 45px;
+}
+
+
+/* nav {
+    position: fixed;
+    top: 40;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+    background-color: #fff; 
+    border-radius: 10px;
+}
+
+nav ul {
+    display: flex;
+    justify-content: space-around;
+    list-style: none;
+    padding: 0;
+    width: 50%; 
+} */
+
+/* 배너 및 버튼 배치 */
+.banner, .buttons {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+
+.buttons {
+    justify-content: space-around;
+    margin-top:10vh ;
+}
+main section {
+    margin-top: 20vh;
+    margin-bottom: 50vh;
+}
+footer{
+    margin-top:10vh;
+    margin-bottom:10vh;
+}
