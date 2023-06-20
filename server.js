@@ -134,28 +134,3 @@ app.delete('/deleteTodoItem', function (req, response) {
     });
 });
 
-
-
-
-app.get('/list', function (req, res) {
-    db.collection('post').find().toArray(function (err, result) {
-        console.log(result);
-        res.render('list.ejs', { posts: result });
-    });
-});
-
-app.delete('/delete', function (req, response) {
-    req.body._id = parseInt(req.body._id);
-    db.collection('post').deleteOne(req.body, function (err, result) {
-        if (err) {
-            console.log(err);
-            response.status(500).send('Database Error');
-        } else if (result.deletedCount === 0) {
-            console.log('No document matched the query. Deleted 0 documents.');
-            response.status(404).send('Document not found');
-        } else {
-            console.log('삭제완료');
-            response.status(200).send('삭제완료');
-        }
-    });
-});
