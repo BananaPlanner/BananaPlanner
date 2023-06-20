@@ -1,4 +1,5 @@
-/* 1~17번째 줄까지는 당일의 날짜를 구하는 코드 */
+// todolist-end2
+
 const todoFullDate = document.querySelector('#todoList-date');
 const diaryDate = document.querySelector('#diary-date');
 const today = new Date();
@@ -15,7 +16,6 @@ const WEEK = [
   '토요일',
 ];
 const todoDay = WEEK[today.getDay()];
-/* htmlm에 요소 가져오기 (투두리스트, textBox여는 버튼, textBox, textBox안 제목 입력칸, textBox안 내용 입력칸, 투두 저장버튼, 투두 삭제 버튼) */
 const todoList = document.querySelector('#todoList');
 const addTodoBtn = document.querySelector('.addTodoListBtn');
 const textArea = document.querySelector('#textArea');
@@ -24,23 +24,17 @@ const saveTodoBtn = document.querySelector('#saveTodoBtn');
 const todoContent = document.querySelector('#todoContent_input');
 const deleteTodoBtn = document.querySelector('#deleteTodoBtn');
 
-/* localStorage에 저장되는 todo 배열 */
 let todos = [];
-/* 투두 수정할 때 사용하는 선택된 index값, 지금은 선택된 것이 없으니 -1 */
 let selectedTodoIndex = -1;
+// 제목과 내용, 체크여부
 const TODOS = 'todos';
 
-/* 투두리스트, 일기의 날짜 초기에 당일로 설정 */
 todoFullDate.innerText = `${todoYear}년 ${todoMonth}월 ${todoDate}일 ${todoDay}`;
 diaryDate.innerText = `${todoYear}년 ${todoMonth}월 ${todoDate}일 ${todoDay}`;
 
-/* 투두리스트에 +버튼 누를 시 textBox가 나오게 하는 함수 */
 function setVisible() {
-  /* +버튼이 열려있는지 닫혀있는지 여부는 class에 addTodoListBtn이 있는지 closeTodoListBtn이 있는지 구별을 통해 */
   if (addTodoBtn.classList.contains('addTodoListBtn')) {
-    /* +버튼이 닫혀있는 경우 textBox의 class에서 hidden을 제거 */
     textArea.classList.remove('hidden');
-    /* +버튼의 class add에서 close로 교체*/
     addTodoBtn.classList.remove('addTodoListBtn');
     addTodoBtn.classList.add('closeTextArea');
     addTodoBtn.innerText = 'X';
@@ -48,7 +42,6 @@ function setVisible() {
     todoTitle.value = '';
     todoContent.value = '';
   } else if (addTodoBtn.classList.contains('closeTextArea')) {
-    /* +버튼이 열려있는 경우 textBox의 class에 hidden 추가 */
     document.querySelectorAll('#todoList li label').id = '';
     textArea.classList.add('hidden');
     addTodoBtn.classList.remove('closeTextArea');
@@ -57,7 +50,6 @@ function setVisible() {
     todoList.id = 'todoList';
     todoTitle.value = '';
     todoContent.value = '';
-    /* textBox가 닫히는 경우 만약 투두리스트에 선택된 투두가 있다면 해당 투두의 상태를 다시 선택되지 않음으로 돌려줌 */
     const allList = document.querySelectorAll(' li label');
     for (let list of allList) {
       list.id = '';
@@ -65,9 +57,8 @@ function setVisible() {
     selectedTodoIndex = -1;
   }
 }
-/* textBox의 열림을 강제하는 함수 */
+
 function setVisibleTrue() {
-  /* textBox가 닫힘 상태라면 */
   if (addTodoBtn.classList.contains('addTodoListBtn')) {
     textArea.classList.remove('hidden');
     addTodoBtn.classList.remove('addTodoListBtn');
@@ -77,10 +68,9 @@ function setVisibleTrue() {
   }
 }
 
-/* textBox의 닫힘을 강제하는 함수 */
 function setVisibleFalse() {
-  /* textBox가 열림 상태라면 */
   if (addTodoBtn.classList.contains('closeTextArea')) {
+    document.querySelectorAll('li label').id = '';
     textArea.classList.add('hidden');
     addTodoBtn.classList.remove('closeTextArea');
     addTodoBtn.classList.add('addTodoListBtn');
@@ -90,25 +80,27 @@ function setVisibleFalse() {
   }
 }
 
-function updateTodoCount(dateString) {
-}
 
+function updateTodoCount(dateString) {}
 
-let isDateString = "";
-function loadTodos(dateString){
+let isDateString = '';
+function loadTodos(dateString) {
   isDateString = dateString;
 }
 
-function updateTodoCount(){
+function updateTodoCount() {
   let test = 0;
-  const listLabel = document.querySelectorAll('li label');
+  const listLabel = document.querySelectorAll('ul li label');
+
   for (let i = 0; i < listLabel.length; i++) {
     console.log(listLabel[i]);
     test++;
   }
   let dayText = selectedDay.innerText.split('\n')[0];
 
-  if(listLabel.length != 0){
+
+  if (listLabel.length != 0) {
+
     selectedDay.innerHTML = `${dayText}<br/>할일: ${listLabel.length}`;
   } else {
     selectedDay.innerHTML = dayText;
@@ -124,6 +116,7 @@ function addTodo(event) {
     if (listLabel[i].id === 'selectedLabel') {
       selectedTodoIndex = i;
     }
+  }
 
   if (selectedTodoIndex != -1) {
     todos[selectedTodoIndex].title = title_;
@@ -134,6 +127,9 @@ function addTodo(event) {
       }
       i.id = '';
     }
+
+    /* API연결 필요 */
+    /* 선택된 todo의 내용을 수정하고 다시 local에 저장 */
     localStorage.setItem(TODOS, JSON.stringify(todos));
   } else {
     const input = {
@@ -145,6 +141,8 @@ function addTodo(event) {
     };
     if (title_ != '' || content_ != '') {
       todos.push(input);
+      /* API연결 필요 */
+      /* 새로운 todo를 추가 */
       localStorage.setItem(TODOS, JSON.stringify(todos));
       paint(input);
     } else {
@@ -155,6 +153,8 @@ function addTodo(event) {
   todoContent.value = '';
   setVisibleFalse();
   updateTodoCount();
+  updateWeekTodo();
+  todoSettingDiary();
 }
 
 function paint(input) {
@@ -179,6 +179,8 @@ function setCheck(event) {
   const todo = searchTodoTitleValue(event.target.value);
   if (todo != null) {
     todo.check = event.target.checked;
+    /* API연결 필요 */
+    /* todo의 check여부에 변화가 생겼을 시 이를 local에 저장 */
     localStorage.setItem(TODOS, JSON.stringify(todos));
   } else {
     console.log('not found');
@@ -236,7 +238,16 @@ function searchTodoTitleValue(label) {
 
 function searchTodoByDay(todo) {
   const todoDay = todo.date;
-  if (parseInt(todoDay.split(" ")[2]) === parseInt(todoFullDate.innerHTML.split(" ")[2])) {
+  let year1 = parseInt(todoDay.split(' ')[0]);
+  let month1 = parseInt(todoDay.split(' ')[1]);
+  let day1 = parseInt(todoDay.split(' ')[2]);
+  let todoDayDate = `${year1}${month1}${day1}`;
+
+  let year2 = parseInt(todoFullDate.innerHTML.split(' ')[0]);
+  let month2 = parseInt(todoFullDate.innerHTML.split(' ')[1]);
+  let day2 = parseInt(todoFullDate.innerHTML.split(' ')[2]);
+  let todoFullDayDate = `${year2}${month2}${day2}`;
+  if (todoDayDate === todoFullDayDate) {
     return todo;
   } else return null;
 }
@@ -255,8 +266,9 @@ function deleteTodo(event) {
   event.preventDefault();
   const deleteTodoTitle = todoTitle.value;
   const deleteTodoIndex = searchTodoIndex(deleteTodoTitle);
-  //console.log(deleteTodoIndex);
   todos.splice(deleteTodoIndex, 1);
+  /* API연결 필요 */
+  /* 해당 todo를 지우고 local에 저장된 todos를 해당 todo를 지운 배열로 다시 설정 */
   localStorage.setItem(TODOS, JSON.stringify(todos));
   const listLabel = document.querySelectorAll('li label');
   const list = document.querySelectorAll('li');
@@ -268,6 +280,7 @@ function deleteTodo(event) {
     i.id = '';
   }
   setVisibleFalse();
+  updateWeekTodo();
   updateTodoCount();
 }
 
@@ -296,6 +309,9 @@ observerTodo.observe(todoFullDate, {
 deleteTodoBtn.addEventListener('click', deleteTodo);
 addTodoBtn.addEventListener('click', setVisible);
 saveTodoBtn.addEventListener('click', addTodo);
+
+/* API연결 필요 */
+/* 처음 화면이 로딩될 때 해당 user의 정보를 local에 저장한 후 다음 코드가 실행되게 해야함 */
 let savedTodos = localStorage.getItem(TODOS);
 
 if (savedTodos != null) {
