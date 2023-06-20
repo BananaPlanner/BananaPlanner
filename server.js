@@ -25,6 +25,10 @@ MongoClient.connect('mongodb+srv://admin:5328@root51.fyq2cjz.mongodb.net/?retryW
 app.get('/', function (req, res) {
     res.sendFile(__dirname + '/views/hompage.html');
 });
+app.get('/login.html', function (req, res) {
+    res.sendFile(__dirname + '/views/login.html');
+});
+
 app.get('/index.html', function (req, res) {
     res.sendFile(__dirname + '/views/index.html');
 });

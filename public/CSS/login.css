@@ -36,7 +36,7 @@ body {
   margin: auto;
   width: 760px;
   height: 340px;
-  background: url('../img/banana.png');
+  background: url('/img/banana.png');
   background-size: cover;
 }
 
