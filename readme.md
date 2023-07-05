@@ -28,6 +28,7 @@ https://www.figma.com/file/mHb0cf7nqmUTwkYLWBLOJf/%EB%B0%94%EB%82%98%EB%82%98%ED
     설치가 돼있는데도 실행이 안된다면, 메일(jsu5328@naver.com)로 연락주시길 바랍니다.
     
     ```json
+    "dotenv": "^16.3.1",
     "express": "^4.18.2",
     "mongodb": "^3.6.4",
     "nodemon": "^2.0.22"
