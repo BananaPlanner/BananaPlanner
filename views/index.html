@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BananaPlanner</title>
+    <link rel="stylesheet" href="/CSS/style.css">
+    <link rel="stylesheet" href="/CSS/modalWindow.css">
+</head>
+
+<body>
+    <header>
+        <h1 id="title">BANANA<br>PLANNER</h1>
+        <div id="nav-button-left-z">
+            <button id="prevButton" class="nav-button-left">&lt;</button>
+        </div>
+        <div id="nav-button-head-z">
+            <h1 id="monthYearDisplay"></h1>
+            <div id="nav-button-head">
+            </div>
+        </div>
+
+        <div id="nav-button-right-z">
+            <button id="nextButton" class="nav-button-right">&lt;</button>
+        </div>
+        <div id="weather_div">
+            <h3 id="weather"></h3>
+        </div>
+        <div class="tail">
+            <img class="tailImg" src="img/Group 10.svg" style="width: 80%;">
+        </div>
+    </header>
+    <main>
+        <div class="mainBox">
+            <input type="button" value="WEEKLY" id="calendarBtn" onclick="changeCalendarView()"></input>
+            <div class="calendar-wrapper">
+
+                <div id="monthlyDiv" class="monthly">
+                    <div id="calendar" class="calendar"></div>
+                </div>
+                <div id="weeklyDiv" class="weekly hidden">
+                    <div id="weeklyCalendar" class="weeklyCalendar"></div>
+                </div>
+            </div>
+        </div>
+        <div class="rightBox" id="todoListDiv">
+            <input type="button" value="TODOLIST" id="changeBtn" onclick="changeView()"></input>
+            <div id="displayBox" class="display-box">
+                <h1 id="todoList-date"></h1>
+                <ul id="todoList"></ul>
+                <button type="button" class="addTodoListBtn">+</button>
+                <div id="textArea" class="hidden">
+                    <div id="todoTitle">
+                        <form>
+                            <input id="todoTitle_input" type="text">
+                            <button id="saveTodoBtn"><img src="img/edit.png" alt="edit" class="editImg"></button>
+                        </form>
+                    </div>
+                    <div id="todoContent">
+                        <form>
+                            <input id="todoContent_input" type="text">
+                            <button id="deleteTodoBtn"><img src="img/trashcan.png" alt="trashcan"></button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="rightBox hidden" id="diaryDiv">
+            <input type="button" value="DIARY" id="changeBtn" onclick="changeView()"></input>
+            <div class="display-box">
+                <h1 id="diary-date"></h1>
+                <div id="diary-emotion">
+                    <select id="mood">
+                        <option value="happy">&#128512;</option>
+                        <option value="sad">&#128557;</option>
+                        <option value="soso">&#128528;</option>
+                        <option value="angry">&#128544;</option>
+                        <option value="lovely">&#128525;</option>
+                        <option value="sick">&#128567;</option>
+                    </select>
+                </div>
+                <div id="diaryText">
+                    <textarea id="diaryTextForm" rows="13" maxlength="200"></textarea>
+                    <p></p>
+                    <button id="saveDiaryBtn" class="saveDiary"><img class="editImg" src="img/edit.png"></button>
+                    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+                    
+                </div>
+            </div>
+        </div>
+        <div id="modal" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <div class="modal-title-text">
+                    <h2 id="modal-date"></h2>
+                    <p id="modal-info-1"></p>
+                </div>
+                <div class="modal-page-title">
+                    <h1>TodoList</h1>
+                    <h1 id="modal-page-title-1">Diary</h1>
+                    <h1 id="modal-page-title-2">achievement</h1>
+                </div>
+                <div id="modal-page">
+                    <div id="modal-page1" class="model-pages">
+
+                    </div>
+                    <div id="modal-page2" class="model-pages">
+
+                    </div>
+                    <div id="modal-page3" class="model-pages">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="modal" class="modal">
+            <div class="modal-content">
+              <span class="close">&times;</span>
+              <div class="modal-title-text">
+                <h2 id="modal-date"></h2>
+                <p id="modal-info-1"></p>
+              </div>
+                <div class="modal-page-title">
+                    <h1>TodoList</h1>
+                    <h1 id="modal-page-title-1">Diary</h1>
+                    <h1 id="modal-page-title-2">achievement</h1>
+                </div>
+              <div id="modal-page">
+                <div id="modal-page1" class="model-pages">
+
+                </div>
+                <div id="modal-page2" class="model-pages">
+
+                </div>
+                <div id="modal-page3" class="model-pages">
+
+                </div>
+              </div>
+            </div>
+        </div>
+    </main>
+    <script src="scripts/weather.js"></script>
+    <script src="scripts/todoList.js"></script>
+    <script src="scripts/diary.js"></script>
+    <script src="scripts/calendar.js"></script>
+    <script src="scripts/index.js"></script>
+    <script src="scripts/login.js"></script>
+    <script src="scripts/weekly.js"></script>
+    <script src="scripts/modalWindow.js"></script>
+</body>
+
+</html>
