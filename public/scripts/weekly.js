@@ -36,7 +36,7 @@ function loadWeeklyCalendar(date) {
     calendarHtml += `<div class='weeklyDay'>`;
     calendarHtml += `<div class='weekDate'>${weekDay}</div>`;
     calendarHtml += `<div class='todayList'>`;
-    //calendarHtml += getTodoList(weekToday);
+
     calendarHtml += `</div>`;
     calendarHtml += '</div>';
   }
@@ -47,6 +47,7 @@ function loadWeeklyCalendar(date) {
     let weekToday = weekArr[i];
 		getTodoList(weekToday, i);
   }
+
   let dayDivs = weeklyCalendar.getElementsByClassName('weeklyDay');
   for (let i = 0; i < dayDivs.length; i++) {
     dayDivs[i].addEventListener('click',  function(event){
@@ -104,11 +105,6 @@ function clickPrevWeek() {
   loadWeeklyCalendar(currentDate);
 }
 
-// const nextWeek = document.getElementById('nextButton');
-// const prevWeek = document.getElementById('prevButton');
-// nextWeek.addEventListener('click', clickNextWeek);
-// prevWeek.addEventListener('click', clickPrevWeek);
-
 function getTodoList(weekToday, index) {
   const savedTodo = localStorage.getItem('todos');
   const parsedToDo = JSON.parse(savedTodo);
@@ -131,7 +127,6 @@ function getTodoList(weekToday, index) {
   }
 }
 
-
 function searchTodo(todo, weekToday) {
   const todoDay = todo.date;
   let weekDays = [
@@ -143,6 +138,7 @@ function searchTodo(todo, weekToday) {
     '금요일',
     '토요일',
   ];
+
   let todoListYear = weekToday.getFullYear();
   let todoListMonth = weekToday.getMonth() + 1;
   let todoListDate = weekToday.getDate();
@@ -156,6 +152,7 @@ function searchTodo(todo, weekToday) {
   } else 
     return null;
 }
+n:public/scripts/weekly.js
 function paintTodo(todo, weekDiv) {
   const li = document.createElement('li');
   const text = document.createElement('input');
@@ -174,9 +171,11 @@ function paintTodo(todo, weekDiv) {
 }
 
 function updateWeekTodo() {
+
   if(monthlyMode){
     return;
   }
+
   const fullDate = todoFullDate.innerText;
   var dateRegex = /(\d+)년 (\d+)월 (\d+)일 (\S+)요일/;
   var match = fullDate.match(dateRegex);
@@ -191,3 +190,4 @@ function updateWeekTodo() {
   let updateDate = new Date(year, month-1, date, dayOfWeek);
   getTodoList(updateDate, dayOfWeek);
 }
+

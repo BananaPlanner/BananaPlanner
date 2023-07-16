@@ -36,6 +36,7 @@
         <div class="mainBox">
             <input type="button" value="WEEKLY" id="calendarBtn" onclick="changeCalendarView()"></input>
             <div class="calendar-wrapper">
+
                 <div id="monthlyDiv" class="monthly">
                     <div id="calendar" class="calendar"></div>
                 </div>
@@ -112,6 +113,31 @@
 
                     </div>
                 </div>
+            </div>
+        </div>
+        <div id="modal" class="modal">
+            <div class="modal-content">
+              <span class="close">&times;</span>
+              <div class="modal-title-text">
+                <h2 id="modal-date"></h2>
+                <p id="modal-info-1"></p>
+              </div>
+                <div class="modal-page-title">
+                    <h1>TodoList</h1>
+                    <h1 id="modal-page-title-1">Diary</h1>
+                    <h1 id="modal-page-title-2">achievement</h1>
+                </div>
+              <div id="modal-page">
+                <div id="modal-page1" class="model-pages">
+
+                </div>
+                <div id="modal-page2" class="model-pages">
+
+                </div>
+                <div id="modal-page3" class="model-pages">
+
+                </div>
+              </div>
             </div>
         </div>
     </main>
